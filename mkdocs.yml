@@ -9,6 +9,8 @@ nav:
     - 索引: mysql/索引.md
     - 各种锁: mysql/各种锁.md
     - 脏页: mysql/脏页.md
+    - 表: mysql/表.md
+    - 不同的count: mysql/不同的count.md
   - Redis: redis.md
 theme:
   name: material
