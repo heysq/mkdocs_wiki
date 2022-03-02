@@ -12,6 +12,8 @@ nav:
     - 表: mysql/表.md
     - 不同的count: mysql/不同的count.md
     - 两阶段提交: mysql/两阶段提交_崩溃恢复.md
+    - order_by: mysql/order_by.md
+    - SQL执行异常: mysql/sql执行异常.md
   - Redis: redis.md
 theme:
   name: material

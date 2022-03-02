@@ -14,7 +14,7 @@
     
     
       
-        <title>脏页 - Sun's Wiki</title>
+        <title>SQL执行异常 - Sun's Wiki</title>
       
     
     
@@ -90,7 +90,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              脏页
+              SQL执行异常
             
           </span>
         </div>
@@ -282,66 +282,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          脏页
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../%E8%84%8F%E9%A1%B5/" class="md-nav__link">
         脏页
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    脏页
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    刷脏页
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    刷脏页控制策略
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    相邻脏页会被一起刷到磁盘
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -397,11 +342,52 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../sql%E6%89%A7%E8%A1%8C%E5%BC%82%E5%B8%B8/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SQL执行异常
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         SQL执行异常
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    查询长时间不返回
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    查询慢
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -451,28 +437,14 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    脏页
+    查询长时间不返回
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    刷脏页
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    刷脏页控制策略
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    相邻脏页会被一起刷到磁盘
+    查询慢
   </a>
   
 </li>
@@ -490,31 +462,31 @@
               
                 
                 
-                  <h1>脏页</h1>
+                  <h1>SQL执行异常</h1>
                 
-                <h3 id="_1">脏页</h3>
+                <h3 id="_1">查询长时间不返回</h3>
 <ul>
-<li>内存数据页和磁盘数据页不一致的数据页就是脏页</li>
-<li>一致的称为干净页</li>
+<li>表被锁住，等MDL锁 <code>lock table t write</code></li>
+<li>表等待Flush，如果flush阻塞的时候，select也会阻塞<ul>
+<li><code>flush tables t with read lock</code></li>
+<li><code>flush tables with read lock</code></li>
 </ul>
-<h3 id="_2">刷脏页</h3>
-<ul>
-<li>redo log 记录满了，停止所有更新操作</li>
-<li>系统内存不足，需要空间放新的内存页，淘汰一些就数据页，淘汰的如果是脏页就需要刷脏页</li>
-<li>系统空闲的时候，刷脏页</li>
-<li>数据库正常关闭时，刷脏页</li>
+</li>
+<li>等待行锁，当前查询记录有行锁时，如果查询要加读锁就会阻塞当前查询<ul>
+<li><code>select * from t where id = 1 lock in share mode;</code></li>
 </ul>
-<h3 id="_3">刷脏页控制策略</h3>
-<ul>
-<li>脏页占比大于配置开启100%速度刷脏页</li>
-<li>脏页占比小于配置开启（脏页比例/配置）速度刷配置</li>
-<li>redo log checkpoint 计算出一个0-100之间的数字</li>
-<li>取脏页比例和redolog计算的最大值刷脏页</li>
+</li>
 </ul>
-<h3 id="_4">相邻脏页会被一起刷到磁盘</h3>
+<h3 id="_2">查询慢</h3>
 <ul>
-<li>innodb_flush_neighbors 为1时，连同邻居和邻居的邻居一起被刷到磁盘</li>
-<li>为0时只刷自己</li>
+<li>查询条件字段没有命中索引，造成全表扫描</li>
+<li>查询的行正在其他事务被不断更新，然后快照读需要不断的用undo log 去还原可见的MVCC版本<ul>
+<li>lock in share mode 返回特别快，因为是当前读
+<img alt="" src="/images/mysql/sql执行异常.png" /></li>
+</ul>
+</li>
+<li>sql语句本身问题，可以通过查询重写来修改</li>
+<li>mysql本身选错了索引，<code>force index</code> 修正，或者删除选错的索引</li>
 </ul>
                 
               
