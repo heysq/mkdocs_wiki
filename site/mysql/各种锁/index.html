@@ -14,7 +14,7 @@
     
     
       
-        <title>索引 - Sun's Wiki</title>
+        <title>各种锁 - Sun's Wiki</title>
       
     
     
@@ -90,7 +90,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              索引
+              各种锁
             
           </span>
         </div>
@@ -258,6 +258,18 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="../%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+        索引
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -267,12 +279,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          索引
+          各种锁
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        索引
+        各种锁
       </a>
       
         
@@ -288,77 +300,77 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    索引常见数据结构
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#innodb" class="md-nav__link">
-    InnoDB索引模型
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#innodb_1" class="md-nav__link">
-    InnoDB索引类型
+    锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    主键索引和非主键索引查询区别
+    全局锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    重建索引
+    表级锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    覆盖索引
+    表锁
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mdl-metadata-lock" class="md-nav__link">
+    MDL锁 metadata lock
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    最左前缀原则
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#index-condition-pushdown-56" class="md-nav__link">
-    索引下推 index condition pushdown 5.6之后版本
+    行锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    数据库优化器选择索引错误
+    两阶段锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    字符串建立索引
+    死锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
-    索引失效
+    死锁策略
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    主动死锁检测
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    解决方案
   </a>
   
 </li>
@@ -367,18 +379,6 @@
   
 </nav>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../%E5%90%84%E7%A7%8D%E9%94%81/" class="md-nav__link">
-        各种锁
-      </a>
     </li>
   
 
@@ -428,77 +428,77 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    索引常见数据结构
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#innodb" class="md-nav__link">
-    InnoDB索引模型
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#innodb_1" class="md-nav__link">
-    InnoDB索引类型
+    锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    主键索引和非主键索引查询区别
+    全局锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    重建索引
+    表级锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    覆盖索引
+    表锁
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mdl-metadata-lock" class="md-nav__link">
+    MDL锁 metadata lock
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    最左前缀原则
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#index-condition-pushdown-56" class="md-nav__link">
-    索引下推 index condition pushdown 5.6之后版本
+    行锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    数据库优化器选择索引错误
+    两阶段锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    字符串建立索引
+    死锁
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
-    索引失效
+    死锁策略
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    主动死锁检测
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    解决方案
   </a>
   
 </li>
@@ -516,76 +516,76 @@
               
                 
                 
-                  <h1>索引</h1>
+                  <h1>各种锁</h1>
                 
-                <h3 id="_1">索引常见数据结构</h3>
+                <h3 id="_1">锁</h3>
 <ul>
-<li>哈希表：键值对，哈希碰撞用链表链接，只适用于等值查询，不支持范围查询</li>
-<li>有序数组：支持等值查询和范围查询，但是更新数据的情况下，有序数组成本较大，所以有序数组只适用于静态存储引擎</li>
-<li>搜索树</li>
+<li>全局锁</li>
+<li>表级锁</li>
+<li>行锁</li>
 </ul>
-<h3 id="innodb">InnoDB索引模型</h3>
+<h3 id="_2">全局锁</h3>
 <ul>
-<li>索引组织表：按主键顺序存放在索引上</li>
-<li>InnoDB 使用 B+ 树索引模型，数据都是存储在 B+ 树中的</li>
-</ul>
-<h3 id="innodb_1">InnoDB索引类型</h3>
-<ul>
-<li>主键索引：叶子节点存的是整行数据。在 InnoDB 里，主键索引也被称为聚簇索引（clustered index）</li>
-<li>非主键索引：叶子节点内容是主键的值。在 InnoDB 里，非主键索引也被称为二级索引（secondary index</li>
-</ul>
-<h3 id="_2">主键索引和非主键索引查询区别</h3>
-<ul>
-<li>非主键索引查询到数据后，如果索引上的数据不满足查询需求，需要回到主键索引继续查询</li>
-<li>主键索引查询，可以查到记录的所有信息</li>
-<li>二次查询主键的过程称为<code>回表</code></li>
-</ul>
-<h3 id="_3">重建索引</h3>
-<ul>
-<li>主键索引
-    <code>alter table T engine = InnoDB;</code> </li>
-<li>二级索引
-    <code>alter table T drop index k;alter table T add index(k);</code></li>
-</ul>
-<h3 id="_4">覆盖索引</h3>
-<ul>
-<li>要查询的数据字段，全部通过二级索引可以查到</li>
-<li>评估业务取舍是否有必要设置联合索引</li>
-</ul>
-<h3 id="_5">最左前缀原则</h3>
-<ul>
-<li>最左前缀可以是联合索引的最左 N 个字段，也可以是字符串索引的最左 M 个字符</li>
-<li>建立原则<ul>
-<li>通过移动位置，可以少建立一个单独索引</li>
-<li>索引占用空间</li>
+<li>对整个数据库实例加锁</li>
+<li><code>Flush tables with read lock</code></li>
+<li>需要整个数据库处于只读状态的时候可以加锁</li>
+<li>执行命令连接断开后，数据库恢复可写状态</li>
+<li>阻塞以下语句<ul>
+<li>数据的增删改查</li>
+<li>数据定义语句，包括建表和修改表结构语句</li>
+<li>更新类事务的提交语句</li>
+<li>典型使用场景，全库逻辑备份</li>
 </ul>
 </li>
 </ul>
-<h3 id="index-condition-pushdown-56">索引下推 index condition pushdown 5.6之后版本</h3>
+<h3 id="_3">表级锁</h3>
 <ul>
-<li>索引遍历过程中，对索引中包含的字段先做判断，直接过滤掉不满足条件的记录，减少回表次数</li>
+<li>表锁</li>
+<li>MDL metadata lock元数据锁</li>
 </ul>
-<h3 id="_6">数据库优化器选择索引错误</h3>
+<h3 id="_4">表锁</h3>
 <ul>
-<li>mysql统计信息不准确的情况下，可以analyze table 刷新统计信息</li>
-<li>force index 强制使用某个索引</li>
-<li>优化sql语句，保持逻辑一致，人为引导mysql选择正确的索引（例如：修改排序字段）</li>
-<li>新建一个更合适的索引</li>
-<li>删掉错误使用的索引</li>
+<li><code>lock tables ... read/write</code></li>
+<li><code>unlock tables</code> 主动释放锁</li>
+<li>锁住其他线程和自己本身</li>
 </ul>
-<h3 id="_7">字符串建立索引</h3>
+<h3 id="mdl-metadata-lock">MDL锁 metadata lock</h3>
 <ul>
-<li>考虑数据区分度</li>
-<li>考虑数据长度</li>
-<li>考虑前缀索引</li>
-<li>hash索引</li>
-<li>倒序存储索引</li>
+<li>MDL不需要显示使用，在访问一个表的时候会被自动加上</li>
+<li>用来保证读写的正确性</li>
+<li>当对一个表进行增删改查的时候加MDL读锁</li>
+<li>当对表结构做变更的时候，加一个MDL写锁</li>
+<li>读锁之间不互斥，因此一个表可以有多个增删改查</li>
+<li>读写锁之间，写锁之间是互斥的，用来保证变更表结构操作的安全性</li>
+<li>MDL会持续到事务提交才释放，做表结构变更的时候容易锁住线上的查询和更新</li>
 </ul>
-<h3 id="_8">索引失效</h3>
+<h3 id="_5">行锁</h3>
 <ul>
-<li>索引字段使用函数或参与计算</li>
-<li>隐式类型转换，MySQL将字符串转为数字进行比较</li>
-<li>隐式字符编码转换 utf8 -&gt; utf8mb4 </li>
+<li>针对数据表中行记录的锁</li>
+</ul>
+<h3 id="_6">两阶段锁</h3>
+<ul>
+<li>行锁在需要的时候被加上，但是不会立刻释放，要等到事务结束时才释放</li>
+<li>事务中需要锁多个行，把最可能造成行锁冲突，最可能影响并发度的锁尽量往后放</li>
+</ul>
+<h3 id="_7">死锁</h3>
+<ul>
+<li>并发系统中不同线程出现资源依赖，涉及的线程都在等待其他线程释放资源，导致线程进入无限等待状态，就是死锁</li>
+</ul>
+<h3 id="_8">死锁策略</h3>
+<ul>
+<li>直接进入等待，直到超时，超时时间通过innodb_lock_wait_timeout来设置</li>
+<li>发起死锁检测，发现死锁后，主动回滚死锁链条中的某一个事务，让其他事务得以继续执行，参数innodb_deadlock_detect 设置为on</li>
+</ul>
+<h3 id="_9">主动死锁检测</h3>
+<ul>
+<li>每个线程都会检查会不会因为自己的加入导致了死锁，线程数量多的情况下，每个线程循环检测会耗费大量CPU</li>
+</ul>
+<h3 id="_10">解决方案</h3>
+<ul>
+<li>关闭死锁检测，死锁等待超时报错后，业务重试</li>
+<li>控制并发线程数量</li>
+<li>调整业务逻辑，顺序无关的逻辑随机选择一条执行</li>
 </ul>
                 
               
@@ -605,7 +605,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../%E7%B4%A2%E5%BC%95/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -614,19 +614,19 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                事务隔离
+                索引
               </div>
             </div>
           </a>
         
         
-          <a href="../%E5%90%84%E7%A7%8D%E9%94%81/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../redis/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                各种锁
+                Redis
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

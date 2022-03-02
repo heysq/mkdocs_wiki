@@ -7,6 +7,7 @@ nav:
     - 更新语句: mysql/更新语句.md 
     - 事务隔离: mysql/事务隔离.md
     - 索引: mysql/索引.md
+    - 各种锁: mysql/各种锁.md
   - Redis: redis.md
 theme:
   name: material
