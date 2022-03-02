@@ -14,7 +14,7 @@
     
     
       
-        <title>查询语句 - Sun's Wiki</title>
+        <title>索引 - Sun's Wiki</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mysql" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -90,7 +90,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              查询语句
+              索引
             
           </span>
         </div>
@@ -222,100 +222,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          查询语句
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5/" class="md-nav__link">
         查询语句
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
-    MySQL架构图
-  </a>
-  
-    <nav class="md-nav" aria-label="MySQL架构图">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server" class="md-nav__link">
-    Server 层
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    存储引擎层
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    连接器
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    分析器
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    优化器
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    执行器
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    查询语句的执行过程一般是经过连接器、分析器、优化器、执行器等功能模块，最后到达存储引擎
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -347,11 +258,115 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../%E7%B4%A2%E5%BC%95/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          索引
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         索引
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    索引常见数据结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#innodb" class="md-nav__link">
+    InnoDB索引模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#innodb_1" class="md-nav__link">
+    InnoDB索引类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    主键索引和非主键索引查询区别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    重建索引
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    覆盖索引
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最左前缀原则
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#index-condition-pushdown-56" class="md-nav__link">
+    索引下推 index condition pushdown 5.6之后版本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    数据库优化器选择索引错误
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    字符串建立索引
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    索引失效
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -400,64 +415,79 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
-    MySQL架构图
-  </a>
-  
-    <nav class="md-nav" aria-label="MySQL架构图">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server" class="md-nav__link">
-    Server 层
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    存储引擎层
+    索引常见数据结构
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
+  <a href="#innodb" class="md-nav__link">
+    InnoDB索引模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#innodb_1" class="md-nav__link">
+    InnoDB索引类型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    连接器
+    主键索引和非主键索引查询区别
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    分析器
+    重建索引
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    优化器
+    覆盖索引
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    执行器
+    最左前缀原则
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
+  <a href="#index-condition-pushdown-56" class="md-nav__link">
+    索引下推 index condition pushdown 5.6之后版本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    查询语句的执行过程一般是经过连接器、分析器、优化器、执行器等功能模块，最后到达存储引擎
+    数据库优化器选择索引错误
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    字符串建立索引
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    索引失效
+  </a>
   
 </li>
       
@@ -474,42 +504,77 @@
               
                 
                 
-                  <h1>查询语句</h1>
+                  <h1>索引</h1>
                 
-                <h2 id="mysql">MySQL架构图</h2>
-<p><img alt="image" src="https://user-images.githubusercontent.com/39154923/138202292-05b49510-68df-449f-a7f7-cf93269bbe96.png" /></p>
-<h3 id="server">Server 层</h3>
-<p>连接器、查询缓存、分析器、优化器、执行器，实现所有的内置函数（如日期、时间、数学和加密函数等）和跨存储引擎的功能：存储过程、触发器、视图</p>
-<h3 id="_1">存储引擎层</h3>
-<p>负责数据的存储和读取，插件式架构，MySQL 5.5.5 版本开始默认使用InnoDB存储引擎</p>
-<h3 id="_2">连接器</h3>
+                <h3 id="_1">索引常见数据结构</h3>
 <ul>
-<li>负责跟客户端建立连接、获取权限、维持和管理连接</li>
-<li>客户端长时间无操作，连接器自动断开连接，由参数 wait_timeout 控制，默认值是 8 小时</li>
-<li>长连接：连接成功后，客户端持续有请求，一直使用同一个连接</li>
-<li>短连接：每次执行完很少的几次查询就断开连接，下次查询重新建立一个</li>
-<li>尽量使用长连接，减轻建立和断开连接的开销</li>
-<li>使用长连接后，MySQL内存占用大</li>
-<li>定期断开连接，进行大数据查询后，断开连接，之后查询再重连</li>
-<li>MySQL5.7之后的版本，大数据查询后，使用</li>
-<li>连接被断开之后，客户端再次发送请求的话，就会收到一个错误提醒： Lost connection to MySQL server during query 使用<code>mysql_reset_connection</code>，重置连接到刚刚创建的状态</li>
+<li>哈希表：键值对，哈希碰撞用链表链接，只适用于等值查询，不支持范围查询</li>
+<li>有序数组：支持等值查询和范围查询，但是更新数据的情况下，有序数组成本较大，所以有序数组只适用于静态存储引擎</li>
+<li>搜索树</li>
 </ul>
-<h3 id="_3">分析器</h3>
+<h3 id="innodb">InnoDB索引模型</h3>
 <ul>
-<li>分析语法错误</li>
-<li>分析数据表和字段错误</li>
+<li>索引组织表：按主键顺序存放在索引上</li>
+<li>InnoDB 使用 B+ 树索引模型，数据都是存储在 B+ 树中的</li>
 </ul>
-<h3 id="_4">优化器</h3>
+<h3 id="innodb_1">InnoDB索引类型</h3>
 <ul>
-<li>分析索引</li>
-<li>分析数据查询的最优方式</li>
+<li>主键索引：叶子节点存的是整行数据。在 InnoDB 里，主键索引也被称为聚簇索引（clustered index）</li>
+<li>非主键索引：叶子节点内容是主键的值。在 InnoDB 里，非主键索引也被称为二级索引（secondary index</li>
 </ul>
-<h3 id="_5">执行器</h3>
+<h3 id="_2">主键索引和非主键索引查询区别</h3>
 <ul>
-<li>判断执行权限</li>
-<li>调用存储引擎接口进行数据查询，拼接返回结果集</li>
+<li>非主键索引查询到数据后，如果索引上的数据不满足查询需求，需要回到主键索引继续查询</li>
+<li>主键索引查询，可以查到记录的所有信息</li>
+<li>二次查询主键的过程称为<code>回表</code></li>
 </ul>
-<h3 id="_6">查询语句的执行过程一般是经过连接器、分析器、优化器、执行器等功能模块，最后到达存储引擎</h3>
+<h3 id="_3">重建索引</h3>
+<ul>
+<li>主键索引
+    <code>alter table T engine = InnoDB;</code> </li>
+<li>二级索引
+    <code>alter table T drop index k;alter table T add index(k);</code></li>
+</ul>
+<h3 id="_4">覆盖索引</h3>
+<ul>
+<li>要查询的数据字段，全部通过二级索引可以查到</li>
+<li>评估业务取舍是否有必要设置联合索引</li>
+</ul>
+<h3 id="_5">最左前缀原则</h3>
+<ul>
+<li>最左前缀可以是联合索引的最左 N 个字段，也可以是字符串索引的最左 M 个字符</li>
+<li>建立原则<ul>
+<li>通过移动位置，可以少建立一个单独索引</li>
+<li>索引占用空间</li>
+</ul>
+</li>
+</ul>
+<h3 id="index-condition-pushdown-56">索引下推 index condition pushdown 5.6之后版本</h3>
+<ul>
+<li>索引遍历过程中，对索引中包含的字段先做判断，直接过滤掉不满足条件的记录，减少回表次数</li>
+</ul>
+<h3 id="_6">数据库优化器选择索引错误</h3>
+<ul>
+<li>mysql统计信息不准确的情况下，可以analyze table 刷新统计信息</li>
+<li>force index 强制使用某个索引</li>
+<li>优化sql语句，保持逻辑一致，人为引导mysql选择正确的索引（例如：修改排序字段）</li>
+<li>新建一个更合适的索引</li>
+<li>删掉错误使用的索引</li>
+</ul>
+<h3 id="_7">字符串建立索引</h3>
+<ul>
+<li>考虑数据区分度</li>
+<li>考虑数据长度</li>
+<li>考虑前缀索引</li>
+<li>hash索引</li>
+<li>倒序存储索引</li>
+</ul>
+<h3 id="_8">索引失效</h3>
+<ul>
+<li>索引字段使用函数或参与计算</li>
+<li>隐式类型转换，MySQL将字符串转为数字进行比较</li>
+<li>隐式字符编码转换 utf8 -&gt; utf8mb4 </li>
+</ul>
                 
               
               
@@ -528,7 +593,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../../kafka/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -537,19 +602,19 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                Kafka
+                事务隔离
               </div>
             </div>
           </a>
         
         
-          <a href="../%E6%9B%B4%E6%96%B0%E8%AF%AD%E5%8F%A5/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../redis/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                更新语句
+                Redis
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
