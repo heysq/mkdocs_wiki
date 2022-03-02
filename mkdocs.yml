@@ -20,3 +20,4 @@ theme:
     scheme: default
   features:
     - navigation.top
+  custom_dir: 'material_theme'
