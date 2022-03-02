@@ -3,7 +3,8 @@ repo_url: https://gitee.com/sunqi43797189/mkdocs_wiki
 repo_name: sunqi43797189/wiki
 nav:
   - Home: index.md
-  - Kafka: kafka.md
+  - Kafka:
+    - Kafka: kafka/kafka.md
   - MySQL:
     - 查询语句: mysql/查询语句.md 
     - 更新语句: mysql/更新语句.md 
@@ -19,7 +20,8 @@ nav:
     - 幻读: mysql/幻读.md
     - 可重复读: mysql/可重复读加锁规则.md
     - binlog&&redolog: mysql/binlog_redolog.md
-  - Redis: redis.md
+  - Redis:
+    - Redis: redis/redis.md
 theme:
   name: material
   language: 'zh'
