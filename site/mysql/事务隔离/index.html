@@ -14,7 +14,7 @@
     
     
       
-        <title>Mysql1 - Sun's Wiki</title>
+        <title>事务隔离 - Sun's Wiki</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mysql" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -90,7 +90,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              Mysql1
+              事务隔离
             
           </span>
         </div>
@@ -198,12 +198,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
       
       <label class="md-nav__link" for="nav-3">
         MySQL
@@ -237,6 +239,108 @@
       <a href="../%E6%9B%B4%E6%96%B0%E8%AF%AD%E5%8F%A5/" class="md-nav__link">
         更新语句
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          事务隔离
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        事务隔离
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    事务四大特性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    事务同时存在产生的问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    标准事务隔离级别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    视图创建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvcc" class="md-nav__link">
+    MVCC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    事务的启动方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    事务版本控制
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    读取数据时，数据版本与事务视图
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    更新数据时，数据版本与事务视图
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -285,8 +389,64 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
-    mysql
+  <a href="#_1" class="md-nav__link">
+    事务四大特性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    事务同时存在产生的问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    标准事务隔离级别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    视图创建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvcc" class="md-nav__link">
+    MVCC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    事务的启动方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    事务版本控制
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    读取数据时，数据版本与事务视图
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    更新数据时，数据版本与事务视图
   </a>
   
 </li>
@@ -304,9 +464,61 @@
               
                 
                 
-                  <h1>Mysql1</h1>
+                  <h1>事务隔离</h1>
                 
-                <h3 id="mysql">mysql</h3>
+                <h3 id="_1">事务四大特性</h3>
+<ul>
+<li>隔离性</li>
+<li>一致性</li>
+<li>原子性</li>
+<li>持久性</li>
+</ul>
+<h3 id="_2">事务同时存在产生的问题</h3>
+<ul>
+<li>脏读</li>
+<li>幻读</li>
+<li>不可重复读</li>
+</ul>
+<h3 id="_3">标准事务隔离级别</h3>
+<ul>
+<li>读未提交：一个事务还没提交时，它做的变更就能被别的事务看到</li>
+<li>读提交：一个事务提交之后，它做的变更才会被其他事务看到。</li>
+<li>可重复读：一个事务执行过程中看到的数据，总是跟这个事务在启动时看到的数据是一致的。当然在可重复读隔离级别下，未提交变更对其他事务也是不可见的</li>
+<li>串行化：按顺序执行事务，不并发执行</li>
+</ul>
+<h3 id="_4">视图创建</h3>
+<ul>
+<li>可重复度：在事务启动的时候创建</li>
+<li>读提交：在sql开始执行的时候创建视图</li>
+<li>读未提交：直接读取记录的最新值，不用创建视图</li>
+<li>串行化：用加锁来控制事务，不需要视图</li>
+</ul>
+<h3 id="mvcc">MVCC</h3>
+<ul>
+<li>每次对记录更新时，都会记录一条回滚日志。通过回滚日志可以将记录还原到更新前的状态</li>
+<li>一条数据库记录，在多个事务中会有不同的版本，不同的read-view</li>
+</ul>
+<h3 id="_5">事务的启动方式</h3>
+<ul>
+<li>begin 或 start transaction。配套的提交语句是 commit，回滚语句是 rollback</li>
+<li>set autocommit=0，这个命令会将这个线程的自动提交关掉。事务持续存在直到主动执行 commit 或 rollback 语句或断开链接</li>
+<li>commit work and chain 语法 提交一个事务后自动开启下一个事务</li>
+</ul>
+<h3 id="_6">事务版本控制</h3>
+<p><img alt="" src="/media/202202/2022-02-19_232234_767363.png" /></p>
+<h3 id="_7">读取数据时，数据版本与事务视图</h3>
+<ul>
+<li>版本未提交，不可见</li>
+<li>数据版本已经提交，但是是在事务视图创建后提交的，不可见</li>
+<li>数据版本已经提交，在事务视图创建之前提交的，可见</li>
+</ul>
+<h3 id="_8">更新数据时，数据版本与事务视图</h3>
+<ul>
+<li>更新数据时，不能在历史版本上更新，会导致新版本已经提交的事务更新失效</li>
+<li>更新数据都是先读后写的，只能用当前读，也就是读当前的值</li>
+<li>select 语句加了 <code>for update</code>或者是<code>lock in share mode</code> 也是当前读</li>
+<li>两个事务同时更新同一行数据，先启动的时候会持有MDL</li>
+</ul>
                 
               
               
@@ -321,6 +533,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../%E6%9B%B4%E6%96%B0%E8%AF%AD%E5%8F%A5/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                更新语句
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../redis/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                Redis
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
