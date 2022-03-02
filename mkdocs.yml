@@ -11,6 +11,7 @@ nav:
     - 脏页: mysql/脏页.md
     - 表: mysql/表.md
     - 不同的count: mysql/不同的count.md
+    - 两阶段提交: mysql/两阶段提交_崩溃恢复.md
   - Redis: redis.md
 theme:
   name: material
