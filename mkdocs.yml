@@ -1,4 +1,6 @@
 site_name: Sun's Wiki
+repo_url: https://gitee.com/sunqi43797189/mkdocs_wiki
+repo_name: sunqi43797189/wiki
 nav:
   - Home: index.md
   - Kafka: kafka.md
@@ -26,3 +28,5 @@ theme:
   features:
     - navigation.top
   custom_dir: 'material_theme'
+  icon:
+    repo: fontawesome/brands/git-alt
