@@ -1,9 +1,8 @@
 site_name: Sun's Wiki
 nav:
   - Home: index.md
-  - First: test.md
   - Kafka: kafka.md
-  - Mysql: 
+  - MySQL:
     - 查询语句: mysql/查询语句.md 
     - 更新语句: mysql/更新语句.md 
   - Redis: redis.md
