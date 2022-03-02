@@ -14,6 +14,9 @@ nav:
     - 两阶段提交: mysql/两阶段提交_崩溃恢复.md
     - order_by: mysql/order_by.md
     - SQL执行异常: mysql/sql执行异常.md
+    - 幻读: mysql/幻读.md
+    - 可重复读: mysql/可重复读加锁规则.md
+    - binlog&&redolog: mysql/binlog_redolog.md
   - Redis: redis.md
 theme:
   name: material
