@@ -32,3 +32,7 @@ theme:
   custom_dir: 'material_theme'
   icon:
     repo: fontawesome/brands/git-alt
+  features:
+    - navigation.top
+plugins:
+  - search     
