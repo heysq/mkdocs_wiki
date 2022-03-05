@@ -1,10 +1,28 @@
 site_name: Sun's Wiki
 repo_url: https://gitee.com/sunqi43797189/mkdocs_wiki
 repo_name: sunqi43797189/wiki
+theme:
+  name: material
+  language: 'zh'
+  palette:
+    scheme: default
+  features:
+    - navigation.top
+  custom_dir: 'material_theme'
+  features:
+    - navigation.top
+    - header.autohide
+plugins:
+  - search
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences 
 nav:
   - Home: index.md
   - Golang:
     - Map: golang/map.md
+    - SyncMap: golang/sync_map.md
   - Kafka:
     - Kafka: kafka/kafka.md
   - MySQL:
@@ -22,18 +40,8 @@ nav:
     - 幻读: mysql/幻读.md
     - 可重复读: mysql/可重复读加锁规则.md
     - binlog&&redolog: mysql/binlog_redolog.md
+    - 主备一致: mysql/主备一致.md
   - Redis:
     - Redis: redis/redis.md
-theme:
-  name: material
-  language: 'zh'
-  palette:
-    scheme: default
-  features:
-    - navigation.top
-  custom_dir: 'material_theme'
-  features:
-    - navigation.top
-    - header.autohide
-plugins:
-  - search     
+  - HTTP:
+    - 预留: http/yuliu.md  
