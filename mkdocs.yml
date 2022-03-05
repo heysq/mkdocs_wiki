@@ -3,6 +3,8 @@ repo_url: https://gitee.com/sunqi43797189/mkdocs_wiki
 repo_name: sunqi43797189/wiki
 nav:
   - Home: index.md
+  - Golang:
+    - Map: golang/map.md
   - Kafka:
     - Kafka: kafka/kafka.md
   - MySQL:
