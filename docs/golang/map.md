@@ -3,7 +3,7 @@
 - var m1 map[string]int // m1 == nil 结果为true，此时写入会产生panic
 - var m2 = map[string]int{}
 - var m3 = make(map[string]int) 
-- makmap_small 源码
+- makemap_small 源码
 ```go
 // makemap_small implements Go map creation for make(map[k]v) and
 // make(map[k]v, hint) when hint is known to be at most bucketCnt
@@ -105,7 +105,8 @@ func mapassign(t *maptype, h *hmap, key unsafe.Pointer) unsafe.Pointer {
 - value := hash[key]
 - value, ok := hash[key]
 - 如果key不存在，返回value类型的零值
-- mapaccess 源码
+- mapaccess1 返回val 源码
+- mapaccess2 返回val和bool
 ```go
 // mapaccess1 returns a pointer to h[key].  Never returns nil, instead
 // it will return a reference to the zero object for the elem type if
