@@ -185,6 +185,12 @@ bucketloop:
 
 ```
 
+#### 删除map中的元素
+- `mapdelete` 方法
+
+#### range map
+- 调用 `mapiterinit` 方法进行初始化
+- 不断调用 `mapiternext` 方法进行循环
 ### 特性
 - map是个指针，底层指向hmap，所以是个引用类型
 - golang slice、map、channel都是引用类型，当引用类型作为函数参数时，可能会修改原内容数据
@@ -197,17 +203,12 @@ bucketloop:
 - 每个map的底层结构是hmap，hmap包含若干个结构为bmap的bucket数组。每个bucket底层都采用链表结构
 - map 结构
 ```golang
-作者：Go程序员
-链接：https://www.zhihu.com/question/414084056/answer/2321836599
-来源：知乎
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 // A header for a Go map.
 type hmap struct {
     count     int 
     // 代表哈希表中的元素个数，调用len(map)时，返回的就是该字段值。
-    flags     uint8 
-    // 状态标志，下文常量中会解释四种状态位含义。
+    flags     uint8 // 标记 扩容状态，读写状态
     B         uint8  
     // buckets（桶）的对数log_2
     // 如果B=5，则buckets数组的长度 = 2^5=32，意味着有32个桶
@@ -351,5 +352,146 @@ func mapiternext(it *hiter) {
 ### 线程安全的map怎么实现
 - 使用读写锁 `map` + `sync.RWMutex`
 - [sync.Map](sync_map.md)
+
 ### map扩容策略
+- 装载因子超过阈值，源码里定义的阈值是 6.5
+- overflow 的 bucket 数量过多：当 B 小于 15，也即 bucket 总数小于 2^15 时，overflow 的 bucket 数量超过 2^B；当 B >= 15，也即 bucket 总数大于等于 2^15时，overflow 的 bucket 数量超过 2^15。
+- 命中装载因子增量扩容
+- 命中溢出桶太多，等量扩容
+- 扩容时，只是把原来的桶挂载到新的桶上，然后采用增量复制去迁移桶内的数据
+
+
+```go
+// Maximum average load of a bucket that triggers growth is 6.5.
+// Represent as loadFactorNum/loadFactorDen, to allow integer math.
+loadFactorNum = 13
+loadFactorDen = 2
+
+
+// growing reports whether h is growing. The growth may be to the same size or bigger.
+func (h *hmap) growing() bool {
+	return h.oldbuckets != nil
+}
+
+// overLoadFactor reports whether count items placed in 1<<B buckets is over loadFactor.
+func overLoadFactor(count int, B uint8) bool {
+	return count > bucketCnt && uintptr(count) > loadFactorNum*(bucketShift(B)/loadFactorDen)
+}
+
+// tooManyOverflowBuckets reports whether noverflow buckets is too many for a map with 1<<B buckets.
+// Note that most of these overflow buckets must be in sparse use;
+// if use was dense, then we'd have already triggered regular map growth.
+func tooManyOverflowBuckets(noverflow uint16, B uint8) bool {
+	// If the threshold is too low, we do extraneous work.
+	// If the threshold is too high, maps that grow and shrink can hold on to lots of unused memory.
+	// "too many" means (approximately) as many overflow buckets as regular buckets.
+	// See incrnoverflow for more details.
+	if B > 15 {
+		B = 15
+	}
+	// 15 & 15 = 15
+	// 判断符右边最大的结果就是1 << 15
+	// 这个操作可能是见的太少，为什么要用15呢？
+	// The compiler doesn't see here that B < 16; mask B to generate shorter shift code.
+	return noverflow >= uint16(1)<<(B&15)
+}
+
+// Did not find mapping for key. Allocate new cell & add entry.
+
+// If we hit the max load factor or we have too many overflow buckets,
+// and we're not already in the middle of growing, start growing.
+// 最大装载因子或者溢出桶太多，然后还没有在扩容状态，开始扩容
+if !h.growing() && (overLoadFactor(h.count+1, h.B) || tooManyOverflowBuckets(h.noverflow, h.B)) {
+    hashGrow(t, h)
+    goto again
+}
+
+func hashGrow(t *maptype, h *hmap) {
+	// 命中装载因子，增量扩容
+	// 溢出桶太多，等量扩容
+	// If we've hit the load factor, get bigger.
+	// Otherwise, there are too many overflow buckets,
+	// so keep the same number of buckets and "grow" laterally.
+	bigger := uint8(1)
+	if !overLoadFactor(h.count+1, h.B) {
+		bigger = 0
+		h.flags |= sameSizeGrow
+	}
+	oldbuckets := h.buckets
+	newbuckets, nextOverflow := makeBucketArray(t, h.B+bigger, nil)
+
+	flags := h.flags &^ (iterator | oldIterator)
+	if h.flags&iterator != 0 {
+		flags |= oldIterator
+	}
+	// commit the grow (atomic wrt gc)
+	h.B += bigger // 如果bigger是0就是等量扩容，是1就是2倍，翻倍扩容
+	h.flags = flags
+	h.oldbuckets = oldbuckets
+	h.buckets = newbuckets
+	h.nevacuate = 0
+	h.noverflow = 0
+
+	if h.extra != nil && h.extra.overflow != nil {
+		// Promote current overflow buckets to the old generation.
+		if h.extra.oldoverflow != nil {
+			throw("oldoverflow is not nil")
+		}
+		h.extra.oldoverflow = h.extra.overflow
+		h.extra.overflow = nil
+	}
+	if nextOverflow != nil {
+		if h.extra == nil {
+			h.extra = new(mapextra)
+		}
+		h.extra.nextOverflow = nextOverflow
+	}
+
+	// 哈希表数据的实际复制是增量完成的
+	// 通过growWork() 和evacuate()。
+	// the actual copying of the hash table data is done incrementally
+	// by growWork() and evacuate().
+}
+
+// 写或者删map中的元素才会调用growWork
+// mapassign
+// mapdelete
+func growWork(t *maptype, h *hmap, bucket uintptr) {
+	// make sure we evacuate the oldbucket corresponding
+	// to the bucket we're about to use
+
+	evacuate(t, h, bucket&h.oldbucketmask())
+
+	// evacuate one more oldbucket to make progress on growing
+	if h.growing() {
+		evacuate(t, h, h.nevacuate)
+	}
+}
+
+// 迁移桶内数据
+func evacuate(t *maptype, h *hmap, oldbucket uintptr) {
+	b := (*bmap)(add(h.oldbuckets, oldbucket*uintptr(t.bucketsize)))
+	newbit := h.noldbuckets()
+	if !evacuated(b) {
+		// TODO: reuse overflow buckets instead of using new ones, if there
+		// is no iterator using the old buckets.  (If !oldIterator.)
+
+		// 先搞长度2个的数组
+		// xy contains the x and y (low and high) evacuation destinations.
+		var xy [2]evacDst
+		x := &xy[0] // 用一个
+		x.b = (*bmap)(add(h.buckets, oldbucket*uintptr(t.bucketsize)))
+		x.k = add(unsafe.Pointer(x.b), dataOffset)
+		x.e = add(x.k, bucketCnt*uintptr(t.keysize))
+
+		if !h.sameSizeGrow() { // 不是等量扩容，再用另一个
+			// Only calculate y pointers if we're growing bigger.
+			// Otherwise GC can see bad pointers.
+			y := &xy[1]
+			y.b = (*bmap)(add(h.buckets, (oldbucket+newbit)*uintptr(t.bucketsize)))
+			y.k = add(unsafe.Pointer(y.b), dataOffset)
+			y.e = add(y.k, bucketCnt*uintptr(t.keysize))
+		}
+
+```
 
