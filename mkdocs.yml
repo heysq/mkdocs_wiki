@@ -23,6 +23,10 @@ nav:
   - Golang:
     - Map: golang/map.md
     - SyncMap: golang/sync_map.md
+    - Goroutine && Thread: golang/goroutine_thread.md 
+    - GMP: golang/gmp.md
+    - GMP机制: golang/gmp_detail.md
+    - Goroutine 状态: golang/goroutine_status.md
   - Kafka:
     - Kafka: kafka/kafka.md
   - MySQL:
@@ -44,4 +48,10 @@ nav:
   - Redis:
     - Redis: redis/redis.md
   - HTTP:
-    - 预留: http/yuliu.md  
+    - 数据链路层: http/数据链路层.md  
+    - 网络层: http/网络层.md
+    - 传输层: http/传输层.md
+  - VIM:
+    - vimrc: vim/vimrc.md 
+  - IDE:
+    - VsCode背景图: ide/vscode_background.md
