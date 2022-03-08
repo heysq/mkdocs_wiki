@@ -51,6 +51,7 @@ nav:
     - 数据链路层: http/数据链路层.md  
     - 网络层: http/网络层.md
     - 传输层: http/传输层.md
+    - 网络安全: http/网络安全.md
   - VIM:
     - vimrc: vim/vimrc.md 
   - IDE:
