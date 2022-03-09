@@ -5,7 +5,8 @@ theme:
   name: material
   language: 'zh'
   palette:
-    scheme: default
+    primary: grey
+    accent: blue
   features:
     - navigation.top
   custom_dir: 'material_theme'
