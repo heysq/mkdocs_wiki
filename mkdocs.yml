@@ -5,7 +5,7 @@ theme:
   name: material
   language: 'zh'
   palette:
-    primary: grey
+    primary: indigo
     accent: blue
   features:
     - navigation.top
