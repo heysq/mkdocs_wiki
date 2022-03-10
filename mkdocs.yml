@@ -54,6 +54,7 @@ nav:
     - 传输层: http/传输层.md
     - 网络安全: http/网络安全.md
     - HTTPS: http/https.md
+    - HTTP升级改进: http/http升级改造.md
   - VIM:
     - vimrc: vim/vimrc.md 
   - IDE:
