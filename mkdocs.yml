@@ -30,6 +30,7 @@ nav:
     - Goroutine 状态: golang/goroutine_status.md
     - Goroutine 泄漏: golang/goroutine_xielou.md
     - 限流算法&&限流器: golang/xianliu.md
+    - Channel: golang/channel.md
   - Kafka:
     - Kafka: kafka/kafka.md
   - MySQL:
