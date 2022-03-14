@@ -28,6 +28,7 @@ nav:
     - GMP: golang/gmp.md
     - GMP机制: golang/gmp_detail.md
     - Goroutine 状态: golang/goroutine_status.md
+    - Goroutine 泄漏: golang/goroutine_xielou.md
   - Kafka:
     - Kafka: kafka/kafka.md
   - MySQL:
