@@ -1,4 +1,4 @@
-site_name: Sun's Wiki
+site_name: Sunqi's Wiki
 repo_url: https://gitee.com/sunqi43797189/mkdocs_wiki
 repo_name: sunqi43797189/wiki
 theme:
@@ -63,3 +63,5 @@ nav:
     - vimrc: vim/vimrc.md 
   - IDE:
     - VsCode背景图: ide/vscode_background.md
+  - 计算机组成:
+    - 冯诺依曼体系结构: jsjzc/fnym.md  
