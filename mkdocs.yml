@@ -64,4 +64,6 @@ nav:
   - IDE:
     - VsCode背景图: ide/vscode_background.md
   - 计算机组成:
-    - 冯诺依曼体系结构: jsjzc/fnym.md  
+    - 冯诺依曼体系结构: jsjzc/fnym.md 
+    - 寄存器: jsjzc/jicunqi.md
+    - 程序栈: jsjzc/chengxuzhan.md
