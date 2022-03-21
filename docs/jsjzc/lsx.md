@@ -24,4 +24,35 @@
 - 每一级流水线对应的输出，都要放到流水线寄存器（Pipeline Register）里面
 - 在下一个时钟周期，交给下一个流水线级去处理。所以，每增加一级的流水线，就要多一级写入到流水线寄存器的操作
 - 级数变多后，写入流水线寄存器的时间占比会越来越高，提升性能性价比不高
+- 指令依赖问题广泛存在
 ![](/images/jsjzc/liushuixianwenti.jpeg)
+
+### 流水线三大冒险
+- 结构冒险 Structural Hazard
+- 数据冒险 Data Hazard
+- 控制冒险 Control Hazard
+
+### 结构冒险
+- 硬件电路层面问题
+- 访问内存和取指令都需要进行内存数据的读取，但是只有一个地址译码器，做为输入，于是一个时钟周期内，只能进行一个内存数据操作
+
+> 对于访问内存数据和取指令的冲突，一个直观的解决方案就是把我们的内存分成两部分，让它们各有各的地址译码器。这两部分分别是存放指令的程序内存和存放数据的数据内存。这种把内存拆成两部分的解决方案，在计算机体系结构里叫作哈佛架构（Harvard Architecture）
+
+![](/images/jsjzc/jiegoumaoxian.jpeg)
+
+- 现代CPU混合架构
+- 借鉴了哈佛结构的思路，现代的 CPU 虽然没有在内存层面进行对应的拆分，却在 CPU 内部的高速缓存部分进行了区分，把高速缓存分成了指令缓存（Instruction Cache）和数据缓存（Data Cache）两部分
+![](/images/jsjzc/hunhejiagou.jpeg)
+
+### 数据冒险
+- 同时在执行的多个指令之间，有数据依赖的情况
+- 先写后读 Read After Write，RAW 数据依赖，也就是 Data Dependency
+- 先读后写 Write After Read，WAR 反依赖，也就是 Anti-Dependency
+- 写后再写 Write After Write，WAW 输出依赖，也就是 Output Dependency
+
+### 流水线停顿
+- 解决数据冒险
+- 也叫流水线冒泡
+- 让整个流水线停顿一个或者多个周期
+- 实际cpu是在执行后面的操作步骤前面，插入一个 NOP 操作，也就是执行一个其实什么都不干的操作
+![](/images/jsjzc/liushuixiantingdun.jpeg)
