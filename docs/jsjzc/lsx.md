@@ -110,4 +110,5 @@ x = y * z
 
 ##### 双模态分支预测
 - 也叫 2 比特饱和计数
+- 添加状态机
 ![](/images/jsjzc/shuangmotai.jpeg)
