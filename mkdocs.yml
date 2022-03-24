@@ -74,3 +74,4 @@ nav:
     - 流水线: jsjzc/lsx.md
     - CPU加速: jsjzc/cpu加速.md
     - 异常&&中断: jsjzc/yc&&zd.md
+    - 指令集CISC和RISC: jsjzc/zlj.md
