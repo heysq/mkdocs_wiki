@@ -72,3 +72,5 @@ nav:
     - 浮点数和定点数: jsjzc/fds&&dds.md
     - CPU: jsjzc/cpu.md
     - 流水线: jsjzc/lsx.md
+    - CPU加速: jsjzc/cpu加速.md
+    - 异常&&中断: jsjzc/yc&&zd.md
