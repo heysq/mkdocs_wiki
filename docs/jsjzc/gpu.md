@@ -39,3 +39,36 @@
 - 把不同的像素点混合到一起，最终输出到显示设备
 
 ![](/images/jsjzc/tupianpipline.jpeg)
+
+
+### 现代GPU统一着色架构
+- Unified Shader Architecture
+- GPU里放很多个一样的Shader电路，通过统一调度
+- 顶点处理，图元处理，片段处理，都交给Shader去处理
+![](/images/jsjzc/tongyizhuoseqi.jpeg)
+
+### 现代GPU为什么深度学习快
+- 芯片瘦身
+- 多核并行和SIMT
+- GPU里的超线程
+- GPU还是一个可以进行编程的通用计算的框架，可以在GPU上实现不同的算法
+- 深度学习的大量向量和矩阵计算，没有复杂的逻辑和分支，非常GPU并行计算架构
+
+#### 芯片瘦身
+- GPU工作过程是一个流式处理过程
+- 相比CPU去掉复杂的乱序执行，流水线，分支预算以及高速缓存等功能及部件
+- 只留下取指令，指令译码和ALU以及需要的寄存器和缓存
+![](/images/jsjzc/xinpianshoushen.jpeg)
+
+#### 多核并行和SIMT
+- 一个GPU里边可以塞入多个并行的GPU电路
+![](/images/jsjzc/duohebingxing.jpeg)
+- SIMT，类似CPU的SIMD（一次性取出多个数据，放到寄存器里，用一个指令去运行），但是一次取出多个数据，然后交给不同的线程去处理
+- 取指令和指令译码阶段，取出的指令可以给到后面多个不同的ALU并行进行运算
+![](/images/jsjzc/simt.jpeg)
+
+#### GPU里的超线程
+- GPU里也存在流水线停顿问题
+- 当流水线遇到停顿时，就会调度一些别的任务到当前的ALU
+- 需要对别的调度过来的任务提供`执行上下文`，所以一个Core里边的执行上下文要比ALU多
+![](/images/jsjzc/GPUchaoxiancheng.jpeg)
