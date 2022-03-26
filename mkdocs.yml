@@ -77,3 +77,4 @@ nav:
     - 指令集CISC和RISC: jsjzc/zlj.md
     - GPU: jsjzc/gpu.md
     - 局部性原理: jsjzc/jbx.md
+    - 高速缓存: jsjzc/gshc.md
