@@ -78,3 +78,34 @@
 - 加载内存到Block时，也会加一个同步脏数据到主内存的过程
 ![](/images/jsjzc/xiehui.jpeg)
 
+
+### 缓存一致性问题
+- CPU核心进行数据更改后，其他核心与更改的核心的cache中数据是不一致的
+![](/images/jsjzc/hcbyz.jpeg)
+
+#### 缓存不一致解决
+- 写传播 Write Propagation：一个CPU核心里的cache更新，必须能够传播到其他的对应节点的cache line里
+- 事务的串行化 Transaction Serialization：一个CPU核心里面的读取和写入，在其他节点看起来是顺序是一样的，如果两个CPU核心的cache中有相同的数据时，更新数据情况下，需要加锁机制，只有拿到了对应的cache block的核心才能更新数据
+> 两个CPU核心对数据的更新，传播到其他CPU核心的顺序应该是一样的，先后顺序要一致
+
+
+![](/images/jsjzc/swcxh.jpeg)
+
+### 总线嗅探机制
+- 总线嗅探机制解决多个CPU核心之间的数据传播机制
+- 本质上就是把所有读写请求都通过总线广播给所有CPU核心，然后各个核心接收信息，根据本地缓存的情况进行数据处理
+
+
+### MESI协议
+- 写失效协议（Write Invalidate），只有一个核心负责写入数据，其他核心同步读取到这个写入
+- CPU核心写入Cache之后，会广播一个失效请求告诉其他CPU核心，其他CPU核心，根据内容标记自己本地的Cache中的缓存数据为失效状态
+- 写广播（Write Broadcast）的协议。一个写入请求广播到所有的 CPU 核心，同时更新各个核心里的 Cache
+- 写广播在实现上很简单，但是写广播需要占用更多的总线带宽。写失效只需要告诉其他的 CPU 核心，哪一个内存地址的缓存失效了，但是写广播还需要把对应的数据传输给其他 CPU 核心
+![](/images/jsjzc/xieshixiao.jpeg)
+
+### MESI 内容
+- M：代表已修改 Modified，cache line中的脏的block，里边的数据更新了，但是没有写回到主内存
+- E：代表独占 Exclusive，cache line只加载了当前CPU核所拥有的Cache里，其他的CPU核并没有加载对应的数据到自己的Cache里，这个时候，更新cache block写入数据，不需要更新到其他CPU核心
+- S：代表共享 Shared，独占状态下，核心接收到主线的其他CPU也读取数据到自己的Cache中的请求，就会变成共享状态。当要更新cache中的数据时，需要获取当前对应的cache block数据的所有权，一般发送一个广播操作`RFO（Request For Ownership）`，通知其他CPU核心将对应的Cache标记为失效状态
+- I：代表已失效 Invalidated，cache line中的block，数据已经失效了，数据不可信
+![](/images/jsjzc/mesi.jpeg)
