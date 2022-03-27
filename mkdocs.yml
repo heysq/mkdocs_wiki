@@ -80,3 +80,4 @@ nav:
     - 高速缓存: jsjzc/gshc.md
     - 内存: jsjzc/neicun.md
     - 总线: jsjzc/zongxian.md
+    - DMA: jsjzc/dma.md
