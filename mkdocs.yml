@@ -52,6 +52,8 @@ nav:
   - Redis:
     - 布隆过滤器: redis/布隆过滤器.md
     - Scan: redis/scan.md
+    - SDS简单动态字符串: redis/sds.md
+    
   - HTTP:
     - 数据链路层: http/数据链路层.md  
     - 网络层: http/网络层.md
