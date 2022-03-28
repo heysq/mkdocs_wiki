@@ -52,6 +52,7 @@ nav:
   - Redis:
     - 布隆过滤器: redis/布隆过滤器.md
     - Scan: redis/scan.md
+    - Hash: redis/hash.md
     - SDS简单动态字符串: redis/sds.md
     
   - HTTP:
