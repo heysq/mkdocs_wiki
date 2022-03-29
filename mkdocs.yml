@@ -31,6 +31,7 @@ nav:
     - Goroutine 泄漏: golang/goroutine_xielou.md
     - 限流算法&&限流器: golang/xianliu.md
     - Channel: golang/channel.md
+    - Go开源项目: golang/go_project.md
   - Kafka:
     - Kafka: kafka/kafka.md
   - MySQL:
