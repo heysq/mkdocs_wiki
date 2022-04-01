@@ -21,7 +21,8 @@ markdown_extensions:
   - pymdownx.superfences 
 nav:
   - Home: index.md
-  - Golang:
+  - Go:
+    - 简述: golang/desc.md
     - Map: golang/map.md
     - SyncMap: golang/sync_map.md
     - Goroutine && Thread: golang/goroutine_thread.md 
@@ -32,6 +33,7 @@ nav:
     - 限流算法&&限流器: golang/xianliu.md
     - Channel: golang/channel.md
     - Go开源项目: golang/go_project.md
+    
   - Kafka:
     - Kafka: kafka/kafka.md
   - MySQL:
