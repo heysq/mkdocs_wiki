@@ -33,6 +33,8 @@ nav:
     - 限流算法&&限流器: golang/xianliu.md
     - Channel: golang/channel.md
     - Go开源项目: golang/go_project.md
+    - Go Modules构建模式: golang/go_mod.md
+    - Go Mod6个常规操作: golang/go_mod_operate.md
     
   - Kafka:
     - Kafka: kafka/kafka.md
