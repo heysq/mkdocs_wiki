@@ -36,6 +36,7 @@ nav:
     - Go Modules构建模式: golang/go_mod.md
     - Go Mod6个常规操作: golang/go_mod_operate.md
     - 代码块&&作用域: golang/daimakuai.md
+    - 数据类型: golang/data_type.md
     
   - Kafka:
     - Kafka: kafka/kafka.md
