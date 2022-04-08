@@ -151,3 +151,31 @@ var f float64 = 123.45678
 fmt.Printf("%e\n", f) // 1.234568e+02 十进制科学计数法
 fmt.Printf("%x\n", f) // 0x1.edd3be22e5de1p+06 16进制科学计数法
 ```
+
+### 复数
+- complex64，实部与虚部都是float32
+- complex128，实部与虚部都是float64
+- 如果一个复数没有显示赋予类型，则默认类型为complex128
+
+#### 字面值与初始化
+- 通过字面值直接初始化
+```go
+
+var c = 5 + 6i
+var d = 0o123 + .12345E+5i // 83+12345i
+```
+
+- `complex` 函数，方便创建一个 complex128 类型值
+```go
+
+var c = complex(5, 6) // 5 + 6i
+var d = complex(0o123, .12345E+5) // 83+12345i
+```
+
+- 通过预定义函数 `real`和`imag`来获取一个复数的实部和虚部
+```go
+
+var c = complex(5, 6) // 5 + 6i
+r := real(c) // 5.000000
+i := imag(c) // 6.000000
+```
