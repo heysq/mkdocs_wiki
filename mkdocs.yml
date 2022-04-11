@@ -40,6 +40,7 @@ nav:
     - 字符串类型: golang/string_type.md
     - 常量: golang/changliang.md
     - 数组&&切片: golang/array_slice.md
+    - 杂项: golang/zaxiang.md
     
   - Kafka:
     - Kafka: kafka/kafka.md
