@@ -3,6 +3,19 @@
 - var m1 map[string]int // m1 == nil 结果为true，此时写入会产生panic
 - var m2 = map[string]int{}
 - var m3 = make(map[string]int) 
+- 函数类型、map 类型自身，以及切片类型是不能作为 map 的 key 类型的
+```go
+
+s1 := make([]int, 1)
+s2 := make([]int, 2)
+f1 := func() {}
+f2 := func() {}
+m1 := make(map[int]string)
+m2 := make(map[int]string)
+println(s1 == s2) // 错误：invalid operation: s1 == s2 (slice can only be compared to nil)
+println(f1 == f2) // 错误：invalid operation: f1 == f2 (func can only be compared to nil)
+println(m1 == m2) // 错误：invalid operation: m1 == m2 (map can only be compared to nil)
+```
 - makemap_small 源码
 ```go
 // makemap_small implements Go map creation for make(map[k]v) and
@@ -186,6 +199,7 @@ bucketloop:
 ```
 
 #### 删除map中的元素
+- delete(map, key)
 - `mapdelete` 方法
 
 #### range map
@@ -197,11 +211,16 @@ bucketloop:
 - golang 中没有引用传递，只有值和指针传递。map 作为函数实参传递时本质上也是值传递，因为 map 底层数据结构是通过指针指向实际的元素存储空间，在被调函数中修改 map，对调用者同样可见，所以 map 作为函数实参传递时表现出了引用传递的效果。
 - map 底层数据结构是通过指针指向实际的元素存储空间，对其中一个map的更改，会影响到其他map
 - 遍历无序
+- map 可以自动扩容，map 中数据元素的 value 位置可能在这一过程中发生变化，所以 Go 不允许获取 map 中 value 的地址，这个约束是在编译期间就生效的
 
 ### Map 实现原理
 - Go中的map是一个指针，占用8个字节，指向hmap结构体; 源码src/runtime/map.go中可以看到map的底层结构
 - 每个map的底层结构是hmap，hmap包含若干个结构为bmap的bucket数组。每个bucket底层都采用链表结构
+- 每个 bucket 中存储的是 Hash 值低 bit 位数值相同的元素，默认的元素个数为 BUCKETSIZE（值为 8，Go 1.17 版本中在 $GOROOT/src/cmd/compile/internal/reflectdata/reflect.go 中定义，与runtime/map.go 中常量 bucketCnt 保持一致）
+- 当某个 bucket（比如 buckets[0]) 的 8 个空槽 slot）都填满了，且 map 尚未达到扩容的条件的情况下，运行时会建立 overflow bucket，并将这个 overflow bucket 挂在上面 bucket（如 buckets[0]）末尾的 overflow 指针上，这样两个 buckets 形成了一个链表结构，直到下一次 map 扩容之前，这个结构都会一直存在
 - map 结构
+![](/images/golang/map_struct.jpg)
+![](/images/golang/hmap.jpg)
 ```golang
 
 // A header for a Go map.
@@ -285,6 +304,11 @@ type mapextra struct {
 
 ```
 
+#### tophash区域
+- 向 map 插入一条数据，或者是从 map 按 key 查询数据的时候，运行时都会使用哈希函数对 key 做哈希运算，并获得一个哈希值（hashcode）
+- 运行时会把 hashcode“一分为二”来看待，其中低位区的值用于选定 bucket，高位区的值用于在某个 bucket 中确定 key 的位置
+- 每个 bucket 的 tophash 区域其实是用来快速定位 key 位置的，避免了逐个 key 进行比较这种代价较大的操作
+![](/images/golang/top_hash.jpg)
 
 ### 为什么遍历map无序？
 - range map，初始化时调用`fastrand()`随机一个数字，决定本次range的起始点
