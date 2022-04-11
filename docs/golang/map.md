@@ -218,7 +218,7 @@ bucketloop:
 - 每个map的底层结构是hmap，hmap包含若干个结构为bmap的bucket数组。每个bucket底层都采用链表结构
 - 每个 bucket 中存储的是 Hash 值低 bit 位数值相同的元素，默认的元素个数为 BUCKETSIZE（值为 8，Go 1.17 版本中在 $GOROOT/src/cmd/compile/internal/reflectdata/reflect.go 中定义，与runtime/map.go 中常量 bucketCnt 保持一致）
 - 当某个 bucket（比如 buckets[0]) 的 8 个空槽 slot）都填满了，且 map 尚未达到扩容的条件的情况下，运行时会建立 overflow bucket，并将这个 overflow bucket 挂在上面 bucket（如 buckets[0]）末尾的 overflow 指针上，这样两个 buckets 形成了一个链表结构，直到下一次 map 扩容之前，这个结构都会一直存在
-- map 结构
+- map 结构，key和value单独排列在一起可以减少结构体对齐填充，减少内存浪费
 ![](/images/golang/map_struct.jpg)
 ![](/images/golang/hmap.jpg)
 ```golang

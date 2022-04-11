@@ -45,3 +45,116 @@ type T struct {
 - Empty是一个不包含任何字段的空结构体类型
 - 空结构体类型变量的内存占用为 0
 - 基于空结构体类型内存零开销这样的特性， Go 开发中会经常使用空结构体类型元素，作为一种“事件”信息进行 Goroutine 之间的通信
+```go
+
+var c = make(chan Empty) // 声明一个元素类型为Empty的channel
+c<-Empty{}               // 向channel写入一个“事件”
+```
+
+### 结构体嵌套
+- 其他结构体作为自定义结构体中字段的类型
+- 可以只引入结构体类型，而不命名
+- 不支持在结构体类型定义中，递归的放入自身类型字段的定义方式
+- 不可在自身中出现自身的字段，但是可以拥有自身的指针类型、以自身类型为元素的切片类型和以自身类型作为value的map类型
+- 一个类型，它所占用的大小是固定的，因此一个结构体定义好的时候，其大小是固定的。但是，如果结构体里面套结构体，那么在计算该结构体占用大小的时候，就会成死循环
+- 但如果是指针、切片、map等类型，其本质都是一个int大小(指针，4字节或者8字节，与操作系统有关)，因此该结构体的大小是固定的，类型就能决定占用内存大小
+```go
+
+type Person struct {
+    Name string
+    Phone string
+    Addr string
+}
+
+type Book struct {
+    Title string
+    Author Person
+    ... ...
+}
+
+type BookV2 struct {
+    Title string
+    Person
+    ... ...
+}
+
+
+type T struct {
+    t  *T           // ok
+    st []T          // ok
+    m  map[string]T // ok
+}     
+```
+
+### 初始化
+- 零值初始化 
+
+```go
+
+type Book struct {
+    ...
+}
+
+var book Book
+var book = Book{} // 标准变量声明
+book := Book{} // 短变量声明
+```
+- 复合字面值
+    - 按顺序一次给每个结构体字段进行赋值，结构体字段较少，且没有非导出字段
+    ```go
+    
+    type Book struct {
+        Title string              // 书名
+        Pages int                 // 书的页数
+        Indexes map[string]int    // 书的索引
+    }
+
+    var book = Book{"The Go Programming Language", 700, make(map[string]int)}
+    ```
+    - field:value”形式的复合字面值
+
+- 使用构造函数初始化结构体
+```go
+
+// $GOROOT/src/time/sleep.go
+func NewTimer(d Duration) *Timer {
+    c := make(chan Time, 1)
+    t := &Timer{
+        C: c,
+        r: runtimeTimer{
+            when: when(d),
+            f:    sendTime,
+            arg:  c,
+        },
+    }
+    startTimer(&t.r)
+    return t
+}
+```
+
+
+### 结构体类型的内存布局
+- 将结构体字段平铺的形式，存放在一个连续内存块中，理想情况
+![](/images/golang/struct_ram.jpg)
+- 现实实际存储，需要在字段之间添加padding，为了内存对齐
+![](/images/golang/struct_padding.jpg)
+- 使用`unsafe.Sizeof(t)` 获取结构体占用空间大小
+- 使用`unsafe.Offsetof(t.Fn)` 获取字段Fn在内存中相对于t起始地址的偏移量
+
+#### 内存对齐
+- 出于对处理器存取数据效率的考虑
+- 对于各种基本数据类型来说，它的变量的内存地址值必须是其类型本身大小的整数倍，比如，一个 int64 类型的变量的内存地址，应该能被 int64 类型自身的大小，也就是 8 整除；一个 uint16 类型的变量的内存地址，应该能被 uint16 类型自身的大小，也就是 2 整除
+- 对于结构体而言，它的变量的内存地址，只要是它最长字段长度与系统对齐系数两者之间较小的那个的整数倍就可以。但对于结构体类型来说，还要让它每个字段的内存地址都严格满足内存对齐要求
+- 可以主动填充结构体，内存对齐 https://geektutu.com/post/hpg-struct-alignment.html
+
+#### 举例
+- 64bit平台系统对齐系数是8
+```go
+type T struct {
+    b byte // 1字节，对齐需要填充7字节
+
+    i int64 // 8字节，对齐不需要填充
+    u uint16 // 2字节，对齐需要填充6字节
+}
+```
+![](/images/golang/neicunduiqi.jpg)
