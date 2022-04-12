@@ -42,8 +42,9 @@ nav:
     - 数组&&切片: golang/array_slice.md
     - 杂项: golang/zaxiang.md
     - 结构体: golang/struct.md
-    - panic_recover: golang/panic_recover.md
-    - condition: golang/condition.md
+    - panic&&recover: golang/panic_recover.md
+    - 条件&&循环: golang/condition.md
+    - 函数: golang/function.md
     
   - Kafka:
     - Kafka: kafka/kafka.md
