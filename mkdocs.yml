@@ -43,6 +43,7 @@ nav:
     - 杂项: golang/zaxiang.md
     - 结构体: golang/struct.md
     - panic_recover: golang/panic_recover.md
+    - condition: golang/condition.md
     
   - Kafka:
     - Kafka: kafka/kafka.md
@@ -62,6 +63,8 @@ nav:
     - 可重复读: mysql/可重复读加锁规则.md
     - binlog&&redolog: mysql/binlog_redolog.md
     - 主备一致: mysql/主备一致.md
+    - 杂项: mysql/zaxiang.md
+
   - Redis:
     - 布隆过滤器: redis/布隆过滤器.md
     - Scan: redis/scan.md
