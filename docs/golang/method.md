@@ -74,3 +74,80 @@ func main() {
     i = t // cannot use t (type T) as type Interface in assignment: T does not implement Interface (M2 method has pointer receiver)
 }
 ```
+
+### type定义的新类型和命名的类型的方法集合
+- 自定义非接口类型的 defined 类型的方法集合为空
+- 自定义接口类型的 defined 类型的方法集合为接口的方法
+```go
+package main
+
+type T struct{}
+
+func (T) M1()  {}
+func (*T) M2() {}
+
+type T1 T
+
+func main() {
+  var t T
+  var pt *T
+  var t1 T1
+  var pt1 *T1
+
+  dumpMethodSet(t)
+  dumpMethodSet(t1)
+
+  dumpMethodSet(pt)
+  dumpMethodSet(pt1)
+}
+
+
+main.T's method set:
+- M1
+
+main.T1's method set is empty!
+
+*main.T's method set:
+- M1
+- M2
+
+*main.T1's method set is empty!
+```
+- 无论原类型是接口类型还是非接口类型，类型别名都与原类型拥有完全相同的方法集合
+```go
+
+type T struct{}
+
+func (T) M1()  {}
+func (*T) M2() {}
+
+type T1 = T
+
+func main() {
+    var t T
+    var pt *T
+    var t1 T1
+    var pt1 *T1
+
+    dumpMethodSet(t)
+    dumpMethodSet(t1)
+
+    dumpMethodSet(pt)
+    dumpMethodSet(pt1)
+}
+
+
+main.T's method set:
+- M1
+
+main.T's method set:
+- M1
+
+*main.T's method set:
+- M1
+- M2
+
+*main.T's method set:
+- M1
+- M2
+```

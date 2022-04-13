@@ -46,6 +46,7 @@ nav:
     - 条件&&循环: golang/condition.md
     - 函数: golang/function.md
     - 方法: golang/method.md
+    - 类型嵌入: golang/leixingqianru.md
     
   - Kafka:
     - Kafka: kafka/kafka.md
