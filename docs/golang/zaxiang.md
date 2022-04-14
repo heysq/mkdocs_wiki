@@ -19,3 +19,15 @@ func main() {
 	fmt.Println(m == nil)
 }
 ```
+
+- 接口变量定义但是不赋初值
+```go
+type MyInterface interface {
+	M1(string)
+}
+
+func main() {
+	var m MyInterface
+	fmt.Println(m == nil)
+}
+```

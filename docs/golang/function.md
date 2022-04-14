@@ -25,3 +25,33 @@
 - 不要相信任何外部输入的参数
 - 不要忽略任何一个错误
 - 不要假定异常不会发生
+
+### defer 获取调用函数方法名
+- runtime.Caller，参数为0时，返回调用者本身的信息（Trace的信息），为1是返回调用调用者的信息（调用Trace的信息）
+- Caller 函数有四个返回值：
+    - 第一个返回值代表的是程序计数（pc）
+    - 第二个和第三个参数代表对应函数所在的源文件名以及所在行数
+    - 最后一个参数代表是否能成功获取这些信息
+- runtime.FuncForPC 函数和程序计数器（PC）得到被跟踪函数的函数信息
+```go
+
+// trace1/trace.go
+
+func Trace() func() {
+    pc, _, _, ok := runtime.Caller(1)
+    if !ok {
+        panic("not found caller")
+    }
+
+    fn := runtime.FuncForPC(pc)
+    name := fn.Name()
+
+    println("enter:", name)
+    return func() { println("exit:", name) }
+}
+
+func main() {
+    defer Trace()()
+    foo()
+}
+```
