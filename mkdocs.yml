@@ -25,6 +25,7 @@ nav:
     - 简述: golang/desc.md
     - Map: golang/map.md
     - SyncMap: golang/sync_map.md
+    - Go并发: golang/go_complicate.md
     - Goroutine && Thread: golang/goroutine_thread.md 
     - GMP: golang/gmp.md
     - GMP机制: golang/gmp_detail.md
