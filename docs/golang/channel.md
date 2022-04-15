@@ -663,3 +663,74 @@ func chanrecv(c *hchan, ep unsafe.Pointer, block bool) (selected, received bool)
 	return true, success
 }
 ```
+
+### 有缓存channel用做计数器，用作计数信号量（counting semaphore），可以用来控制活动goroutine数量
+```go
+
+var active = make(chan struct{}, 3)
+var jobs = make(chan int, 10)
+
+func main() {
+    go func() {
+        for i := 0; i < 8; i++ {
+            jobs <- (i + 1)
+        }
+        close(jobs)
+    }()
+
+    var wg sync.WaitGroup
+
+    for j := range jobs {
+        wg.Add(1)
+        go func(j int) {
+            active <- struct{}{}
+            log.Printf("handle job: %d\n", j)
+            time.Sleep(2 * time.Second)
+            <-active
+            wg.Done()
+        }(j)
+    }
+    wg.Wait()
+}
+```
+
+### nil channel配合 select使用 才不会崩溃
+- channel 关闭后读取会读取到零值
+- 用select可以将关闭后的channel变成nil channel，而不是每次都读到零值
+```go
+func main() {
+    ch1, ch2 := make(chan int), make(chan int)
+    go func() {
+        time.Sleep(time.Second * 5)
+        ch1 <- 5
+        close(ch1)
+    }()
+
+    go func() {
+        time.Sleep(time.Second * 7)
+        ch2 <- 7
+        close(ch2)
+    }()
+
+    for {
+        select {
+        case x, ok := <-ch1:
+            if !ok {
+                ch1 = nil
+            } else {
+                fmt.Println(x)
+            }
+        case x, ok := <-ch2:
+            if !ok {
+                ch2 = nil
+            } else {
+                fmt.Println(x)
+            }
+        }
+        if ch1 == nil && ch2 == nil {
+            break
+        }
+    }
+    fmt.Println("program end")
+}
+```

@@ -31,3 +31,11 @@ func main() {
 	fmt.Println(m == nil)
 }
 ```
+
+- channel定义但是不初始化
+```go
+func main() {
+	var ch chan int
+	fmt.Println(ch == nil)
+}
+```
