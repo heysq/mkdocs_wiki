@@ -25,3 +25,4 @@
 * [方法](method.md)
 * [接口](interface.md)
 * [类型嵌入](leixingqianru.md)
+* [sync包同步原语](sync.md)
