@@ -15,7 +15,7 @@ theme:
     - header.autohide
 plugins:
   - search
-  - progress
+  # - progress
   - literate-nav:
       nav_file: nav.md
 markdown_extensions:

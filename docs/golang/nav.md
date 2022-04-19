@@ -27,3 +27,4 @@
 * [类型嵌入](leixingqianru.md)
 * [sync包同步原语](sync.md)
 * [Socket模型](socket.md)
+* [GC](gc.md)

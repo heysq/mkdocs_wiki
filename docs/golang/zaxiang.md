@@ -39,3 +39,13 @@ func main() {
 	fmt.Println(ch == nil)
 }
 ```
+
+- 指针类型变量没有被显式赋予初值
+```go
+type Book struct{}
+
+func main() {
+	var b *Book
+	fmt.Println(b == nil)
+}
+```
