@@ -7,3 +7,4 @@
 * [VIM](vim/)
 * [IDE](ide/)
 * [计算机组成](jsjzc/)
+* [Linux](linux/)
