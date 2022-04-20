@@ -22,7 +22,7 @@ func foo() { //代码块1
 #### 隐式代码块
 - 无法通过大括号来识别
 
-![](/images/golang/daimakuai.jpg)
+![](/images/go/daimakuai.jpg)
 
 ### 作用域
 - 针对标识符的，不局限于变量

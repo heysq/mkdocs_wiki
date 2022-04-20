@@ -94,7 +94,7 @@ type entry struct {
 ```
 > 引用知乎回答的一张图 https://zhuanlan.zhihu.com/p/344834329
 
-![sync_map结构](/images/golang/sync_map.jpg)
+![sync_map结构](/images/go/sync_map.jpg)
 
 
 ### Load

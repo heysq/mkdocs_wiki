@@ -1,6 +1,6 @@
 ### 方法
 - Go 语言中的方法的本质就是，一个以方法的 receiver 参数作为第一个参数的普通函数
-![](/images/golang/methods.jpg)
+![](/images/go/methods.jpg)
 - 方法支持赋值给变量，相当于第一个参数是结构体自身或者自身的指针类型
 ```go
 package main

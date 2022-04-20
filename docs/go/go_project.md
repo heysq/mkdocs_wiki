@@ -1,1 +1,1 @@
-![](/images/golang/go_project.png)
+![](/images/go/go_project.png)

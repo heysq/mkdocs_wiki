@@ -1,7 +1,7 @@
 ### 函数参数
 - 实际参数：函数实际调用时传入的参数
 - 形式参数：把参数列表中的参数
-![](/images/golang/function.jpg)
+![](/images/go/function.jpg)
 
 ### 传参
 - 函数参数传递采用是值传递的方式

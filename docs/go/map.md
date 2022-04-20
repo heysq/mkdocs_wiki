@@ -219,8 +219,8 @@ bucketloop:
 - 每个 bucket 中存储的是 Hash 值低 bit 位数值相同的元素，默认的元素个数为 BUCKETSIZE（值为 8，Go 1.17 版本中在 $GOROOT/src/cmd/compile/internal/reflectdata/reflect.go 中定义，与runtime/map.go 中常量 bucketCnt 保持一致）
 - 当某个 bucket（比如 buckets[0]) 的 8 个空槽 slot）都填满了，且 map 尚未达到扩容的条件的情况下，运行时会建立 overflow bucket，并将这个 overflow bucket 挂在上面 bucket（如 buckets[0]）末尾的 overflow 指针上，这样两个 buckets 形成了一个链表结构，直到下一次 map 扩容之前，这个结构都会一直存在
 - map 结构，key和value单独排列在一起可以减少结构体对齐填充，减少内存浪费
-![](/images/golang/map_struct.jpg)
-![](/images/golang/hmap.jpg)
+![](/images/go/map_struct.jpg)
+![](/images/go/hmap.jpg)
 ```golang
 
 // A header for a Go map.
@@ -308,7 +308,7 @@ type mapextra struct {
 - 向 map 插入一条数据，或者是从 map 按 key 查询数据的时候，运行时都会使用哈希函数对 key 做哈希运算，并获得一个哈希值（hashcode）
 - 运行时会把 hashcode“一分为二”来看待，其中低位区的值用于选定 bucket，高位区的值用于在某个 bucket 中确定 key 的位置
 - 每个 bucket 的 tophash 区域其实是用来快速定位 key 位置的，避免了逐个 key 进行比较这种代价较大的操作
-![](/images/golang/top_hash.jpg)
+![](/images/go/top_hash.jpg)
 
 ### 为什么遍历map无序？
 - range map，初始化时调用`fastrand()`随机一个数字，决定本次range的起始点

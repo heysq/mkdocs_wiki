@@ -10,19 +10,19 @@
 - 主版本
 - 次版本
 - 补丁版本
-![](/images/golang/yuyibanben.png)
+![](/images/go/yuyibanben.png)
 
 ### 最小版本选择
 - Minimal Version Selection
 - 项目之间出现依赖同一个包但是不同版本的情况
 - go mod 选择依赖所有版本的最小的那个版本
 - go mod 不会选择最新的1.7.0版本，而是选择1.3.0 版本
-![](/images/golang/zuixiaoyilai.png)
+![](/images/go/zuixiaoyilai.png)
 
 ### GO111MODULE配置值
 - on 开启
 - off 关闭
 - auto 编译器判断
-![](/images/golang/go111module.jpeg)
+![](/images/go/go111module.jpeg)
 
 {"app_name":"app_name","file":"U4JqgquBpAExf5h+sX28PEu7zDuq+oO6U7rOulL5SDjcuME4X/jW+ju6qXsm+rJ7CHyIvaU+vr/dAWXCGMNFRP5EmQTGhKNFIEWLRPwEYcPeg6rCycM5QsRCFUIQAZ1BSIJPwiUCkIKWQf2Cq4JtwzbDIoNIQwVCGoL+wUfBZ4B5vwQ+v7xU+5i7LDoH+fq5wbonONE4T/j8eDK4n7mOuq47CvsTfBG9Gf3U/zsAIgHEgqNDQMTABOBFK0TRRfrF5AT4BJSDkUN0AmUCdkIkgbmBkIFPQXuAikFgwYLCGQGhwhYC8cJEg2kDSYPJgwnDBoLvQWWA37/LvyE9a/t0euo6JLk/+S35V/kruES4yzkn+P45dDoce2F7tPvg/X"}

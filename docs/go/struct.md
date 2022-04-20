@@ -135,9 +135,9 @@ func NewTimer(d Duration) *Timer {
 
 ### 结构体类型的内存布局
 - 将结构体字段平铺的形式，存放在一个连续内存块中，理想情况
-![](/images/golang/struct_ram.jpg)
+![](/images/go/struct_ram.jpg)
 - 现实实际存储，需要在字段之间添加padding，为了内存对齐
-![](/images/golang/struct_padding.jpg)
+![](/images/go/struct_padding.jpg)
 - 使用`unsafe.Sizeof(t)` 获取结构体占用空间大小
 - 使用`unsafe.Offsetof(t.Fn)` 获取字段Fn在内存中相对于t起始地址的偏移量
 
@@ -157,7 +157,7 @@ type T struct {
     u uint16 // 2字节，对齐需要填充6字节
 }
 ```
-![](/images/golang/neicunduiqi.jpg)
+![](/images/go/neicunduiqi.jpg)
 
 ### 内存对齐
 - CPU 访问内存时，并不是逐个字节访问，而是以字长（word size）为单位访问
@@ -166,7 +166,7 @@ type T struct {
 - 为了减少 CPU 访问内存的次数，加大 CPU 访问内存的吞吐量。同样读取 8 个字节的数据，一次读取 4 个字节只需要读取 2 次
 - CPU 始终以字长访问内存，如果不进行内存对齐，很可能增加 CPU 访问内存的次数
 - 内存对齐对实现变量的原子性操作也有好处，每次内存访问是原子的，如果变量的大小不超过字长，那么内存对齐后，对该变量的访问就是原子的
-![](/images/golang/neicunduiqijuli.png)
+![](/images/go/neicunduiqijuli.png)
 
 #### 内存对齐倍数
 - unsafe.Alignof(变量)

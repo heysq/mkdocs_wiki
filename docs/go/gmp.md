@@ -16,7 +16,7 @@
 
 ### GMP模型
 - 在 Go 1.1 版本中实现了 G-P-M 调度模型和work stealing 算法，这个模型一直沿用至今
-![](/images/golang/gmp.png)
+![](/images/go/gmp.png)
 
     - P 是一个“逻辑 Proccessor”，每个 G（Goroutine）要想真正运行起来，首先需要被分配一个 P，也就是进入到 P 的本地运行队列（local runq）中
     - 对于 G 来说，P 就是运行它的“CPU”，可以说：在 G 的眼里只有 P
