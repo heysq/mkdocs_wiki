@@ -1,5 +1,5 @@
 * [Home](index.md)
-* [Go](golang/)
+* [Go](go/)
 * [Kafka](kafka/)
 * [MySQL](mysql/)
 * [Redis](redis/)
