@@ -14,3 +14,4 @@
 * [binlog&&redolog](binlog_redolog.md)
 * [主备一致](主备一致.md)
 * [杂项](zaxiang.md)
+* [临时提高性能](临时提高性能.md)
