@@ -9,7 +9,7 @@ ControlPath ~/.ssh/master-%r@%h:%p
 ServerAliveInterval 80
 
 Host tencent_ubuntu
-	Hostname 49.232.155.155
+	Hostname **.**.**.**
 	Port 22
 	User ubuntu
 	IdentityFile ~/.ssh/tencent_ubuntu_rsa
