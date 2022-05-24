@@ -13,5 +13,6 @@
 * [可重复读](可重复读加锁规则.md)
 * [binlog&&redolog](binlog_redolog.md)
 * [主备一致](主备一致.md)
+* [主备延迟](主备延迟.md)
 * [杂项](zaxiang.md)
 * [临时提高性能](临时提高性能.md)

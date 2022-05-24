@@ -8,3 +8,4 @@
 * [IDE](ide/)
 * [计算机组成](jsjzc/)
 * [Linux](linux/)
+* [Ruby&&Rails](ruby/)
