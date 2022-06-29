@@ -68,7 +68,7 @@ let mapleader = “m”
 inoremap w :w
 
 “jj插入模式下jj退出插入模式
-inoremap jj
+inoremap jj <ESC>
 
 “ 分号替换冒号，省的按shift
 nnoremap ; :
