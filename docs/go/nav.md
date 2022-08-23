@@ -32,3 +32,4 @@
 * [运行系统命令](system_command.md)
 * [多版本GO](many_go.md)
 * [fmt备忘](fmt.md)
+* [禁止for循环中使用defer](for_defer.md)
