@@ -12,8 +12,8 @@ steps:
   image: plugins/docker
   pull: if-not-exists
   settings:
-    registry: 192.168.110.2:20003
-    repo: 192.168.110.2:20003/nginx-mkdocs
+    registry: hub.heysq.com:8443
+    repo: hub.heysq.com:8443/nginx-mkdocs
     tags: latest
     dockerfile: Dockerfile
     mirror: https://hub-mirror.c.163.com
