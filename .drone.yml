@@ -14,7 +14,7 @@ steps:
   pull: if-not-exists
   settings:
     username:
-      from_secret: harbor_username
+      from_secret: harbor_name
     password:
       from_secret: harbor_password
     registry: harbor.heysq.com:8443
