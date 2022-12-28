@@ -23,17 +23,16 @@ steps:
     dockerfile: Dockerfile
     mirror: https://hub-mirror.c.163.com
 - name: deploy
-    image: zc2638/drone-k8s-plugin
-    pull: if-not-exists
-    settings:
-      k8s_server: https://192.168.110.2:16443
-      k8s_token:
-        from_secret: k8s_token
-      k8s_ca_crt:
-        from_secret: k8s_ca
-      k8s_skip_tls: false
-      namespace: default
-      templates:
-        - kubernetes.yaml
-      app_name: mkdocs
-  
+  image: zc2638/drone-k8s-plugin
+  pull: if-not-exists
+  settings:
+    k8s_server: https://192.168.110.2:16443
+    k8s_token:
+      from_secret: k8s_token
+    k8s_ca_crt:
+      from_secret: k8s_ca
+    k8s_skip_tls: false
+    namespace: default
+    templates:
+      - kubernetes.yaml
+    app_name: mkdocs
