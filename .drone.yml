@@ -5,6 +5,7 @@ name: default
 steps:
 - name: build
   image: python:3.10-alpine3.16
+  pull: if-not-exists
   commands:
   - pip install -r requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple
   - mkdocs build
@@ -12,8 +13,12 @@ steps:
   image: plugins/docker
   pull: if-not-exists
   settings:
-    registry: hub.heysq.com:8443
-    repo: hub.heysq.com:8443/nginx-mkdocs
+    username:
+      from_secret: harbor_username
+    password:
+      from_secret: harbor_password
+    registry: harbor.heysq.com:8443
+    repo: harbor.heysq.com:8443/library/nginx-mkdocs
     tags: latest
     dockerfile: Dockerfile
     mirror: https://hub-mirror.c.163.com
