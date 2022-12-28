@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mkdocs-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mkdocs
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mkdocs
+    spec:
+      containers:
+      - name: mkdocs
+        image: harbor.heysq.com:8443/library/nginx-mkdocs:latest
+        ports:
+        - containerPort: 80
