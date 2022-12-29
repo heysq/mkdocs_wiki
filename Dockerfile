@@ -1,4 +1,4 @@
-FROM python:3.10-alpine3.16
+FROM harbor.heysq.com:8443/libary/python:3.10-alpine3.16
 WORKDIR /mkdocs_wiki
 COPY . /mkdocs_wiki
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk add --no-cache nginx \
