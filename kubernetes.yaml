@@ -12,6 +12,8 @@ spec:
       labels:
         app: mkdocs
     spec:
+      imagePullSecrets:
+      - name: harbor-registry
       containers:
       - name: mkdocs
         image: harbor.heysq.com:8443/library/nginx-mkdocs:latest
