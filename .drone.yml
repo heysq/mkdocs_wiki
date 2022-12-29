@@ -21,7 +21,6 @@ steps:
     repo: harbor.heysq.com:8443/library/nginx-mkdocs
     tags: latest
     dockerfile: Dockerfile
-    mirror: https://hub-mirror.c.163.com
 - name: deploy
   image: zc2638/drone-k8s-plugin
   pull: if-not-exists
