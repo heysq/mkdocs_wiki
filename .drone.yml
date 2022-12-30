@@ -25,6 +25,6 @@ steps:
   image: ghcr.io/bh90210/dron8s:latest
   pull: if-not-exists
   settings:
-    yaml: ./ubernetes.yaml
+    yaml: ./kubernetes.yaml
     kubeconfig:
       from_secret: kubeconfig
