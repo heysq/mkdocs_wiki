@@ -22,16 +22,8 @@ steps:
     tags: latest
     dockerfile: Dockerfile
 - name: deploy
-  image: zc2638/drone-k8s-plugin
-  pull: if-not-exists
+  image: ghcr.io/bh90210/dron8s:latest
   settings:
-    k8s_server: https://192.168.110.2:16443
-    k8s_token:
-      from_secret: k8s_token
-    k8s_ca_crt:
-      from_secret: k8s_ca
-    k8s_skip_tls: false
-    namespace: default
-    templates:
-      - kubernetes.yaml
-    app_name: mkdocs
+    yaml: kubernetes.yaml
+    kubeconfig:
+      from_secret: kubeconfig
