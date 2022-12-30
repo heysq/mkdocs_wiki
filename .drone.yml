@@ -23,6 +23,7 @@ steps:
     dockerfile: Dockerfile
 - name: deploy
   image: ghcr.io/bh90210/dron8s:latest
+  pull: if-not-exists
   settings:
     yaml: kubernetes.yaml
     kubeconfig:
