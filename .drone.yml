@@ -12,9 +12,9 @@ steps:
   when:
     branch:
     - master
-    - develop
     event:
-    - push
+      exclude:
+      - pull_request
 - name: docker  
   image: plugins/docker
   pull: if-not-exists
@@ -30,4 +30,9 @@ steps:
   when:
     branch:
     - master
-    - develop
+    event:
+      exclude:
+      - pull_request
+trigger:
+  event:
+  - push
