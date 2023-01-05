@@ -31,14 +31,3 @@ steps:
     branch:
     - master
     - develop
-    event:
-    - push
-trigger:
-  event:
-  - cron
-  - custom
-  - push
-  - pull_request
-  - tag
-  - promote
-  - rollback
