@@ -9,6 +9,12 @@ steps:
   commands:
   - pip install -r requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple
   - mkdocs build
+  when:
+    branch:
+    - master
+    - develop
+    event:
+    - push
 - name: docker  
   image: plugins/docker
   pull: if-not-exists
@@ -21,6 +27,8 @@ steps:
     repo: harbor.heysq.com:8443/library/nginx-mkdocs
     tags: latest
     dockerfile: Dockerfile
-trigger:
   branch:
-  - master
+    - master
+    - develop
+    event:
+    - push
