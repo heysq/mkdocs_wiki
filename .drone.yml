@@ -27,7 +27,8 @@ steps:
     repo: harbor.heysq.com:8443/library/nginx-mkdocs
     tags: latest
     dockerfile: Dockerfile
-  branch:
+  when:
+    branch:
     - master
     - develop
     event:
