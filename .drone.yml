@@ -27,3 +27,6 @@ steps:
   when:
     ref:
     - refs/heads/master
+trigger:
+  branch:
+  - master
