@@ -10,11 +10,8 @@ steps:
   - pip install -r requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple
   - mkdocs build
   when:
-    branch:
-    - master
-    event:
-      exclude:
-      - pull_request
+    ref:
+    - refs/heads/master
 - name: docker  
   image: plugins/docker
   pull: if-not-exists
@@ -28,11 +25,5 @@ steps:
     tags: latest
     dockerfile: Dockerfile
   when:
-    branch:
-    - master
-    event:
-      exclude:
-      - pull_request
-trigger:
-  event:
-  - push
+    ref:
+    - refs/heads/master
