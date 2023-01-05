@@ -21,10 +21,8 @@ steps:
     repo: harbor.heysq.com:8443/library/nginx-mkdocs
     tags: latest
     dockerfile: Dockerfile
-- name: deploy
-  image: ghcr.io/bh90210/dron8s:latest
-  pull: if-not-exists
-  settings:
-    yaml: ./kubernetes.yaml
-    kubeconfig:
-      from_secret: kubeconfig
+trigger:
+  branch:
+  - master
+  event:
+  - push
