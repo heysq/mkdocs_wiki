@@ -23,5 +23,6 @@ spec:
       containers:
       - name: mkdocs
         image: harbor.heysq.com:8443/library/nginx-mkdocs:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
