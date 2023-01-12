@@ -61,5 +61,6 @@ steps:
     branch:
     - master
 trigger:
-  event:
-  - push
+  branch:
+  - master
+  - dev
