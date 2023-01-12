@@ -12,7 +12,7 @@ steps:
   when:
     branch:
     - dev
-- name: docker-dev 
+- name: docker-pro
   image: plugins/docker
   pull: if-not-exists
   settings:
@@ -27,7 +27,7 @@ steps:
   when:
     branch:
     - master
-- name: docker-pro
+- name: docker-dev
   image: plugins/docker
   pull: if-not-exists
   settings:
