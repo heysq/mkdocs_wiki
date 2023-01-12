@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mkdocs-deployment
+  name: mkdocs-deployment-dev
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: mkdocs
+      app: mkdocs-dev
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -16,12 +16,12 @@ spec:
   template:
     metadata:
       labels:
-        app: mkdocs
+        app: mkdocs-dev
     spec:
       imagePullSecrets:
       - name: harbor-registry
       containers:
-      - name: mkdocs
-        image: harbor.heysq.com:8443/library/nginx-mkdocs:latest
+      - name: mkdocs-dev
+        image: harbor.heysq.com:8443/library/nginx-mkdocs:dev
         ports:
         - containerPort: 80
