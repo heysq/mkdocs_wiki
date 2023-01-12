@@ -12,7 +12,7 @@ steps:
   when:
     branch:
     - dev
-- name: docker  
+- name: docker-dev 
   image: plugins/docker
   pull: if-not-exists
   settings:
@@ -26,8 +26,22 @@ steps:
     dockerfile: Dockerfile
   when:
     branch:
-    - dev
     - master
+- name: docker-pro
+  image: plugins/docker
+  pull: if-not-exists
+  settings:
+    username:
+      from_secret: harbor_name
+    password:
+      from_secret: harbor_password
+    registry: harbor.heysq.com:8443
+    repo: harbor.heysq.com:8443/library/nginx-mkdocs
+    tags: dev
+    dockerfile: Dockerfile
+  when:
+    branch:
+    - dev
 - name: deploy-dev
   image: appleboy/drone-ssh
   settings:
