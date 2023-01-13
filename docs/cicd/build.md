@@ -5,6 +5,7 @@
 - 数据库暂时使用sqlite
 - 可以自定义端口
 - 访问3000端口设置gitea
+
 > mkdir -p gitea/{data,config} && cd gitea
 > touch docker-compose.yaml
 > docker-compose up -d
@@ -28,7 +29,7 @@ services:
 
 #### Drone 环境准备
 - [Drone官方文档](https://docs.drone.io/server/provider/gitea/)
-- 新建一个OAuth2应用
+- Gitea中新建一个OAuth2应用
 ![](/images/cicd/gitea.png) 
 - 创建一个共享密钥
 ``` shell
