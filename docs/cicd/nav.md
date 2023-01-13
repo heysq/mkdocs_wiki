@@ -1,1 +1,1 @@
-* [Drone部署](drone.md)
+* [搭建CI/CD环境](build.md)
