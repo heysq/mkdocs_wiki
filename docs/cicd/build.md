@@ -28,4 +28,5 @@ services:
 
 #### docker部署Drone
 - [Drone官方文档](https://docs.drone.io/server/provider/gitea/)
-- 
+- 新建一个OAuth2应用
+![](/images/cicd/gitea.png) 
