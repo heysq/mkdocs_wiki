@@ -63,7 +63,7 @@ steps:
   pull: if-not-exists
   settings:
     host:
-      - www.heysq.com
+      - home.heysq.com
     username:
       from_secret: ssh_username
     password:
