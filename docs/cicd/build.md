@@ -30,6 +30,8 @@ services:
 #### Drone 环境准备
 - [Drone官方文档](https://docs.drone.io/server/provider/gitea/)
 - Gitea中新建一个OAuth2应用
+- 应用回调地址写drone将要运行的域名+/login
+- drone.heysq.com:8443/login
 ![](/images/cicd/gitea.png) 
 - 创建一个共享密钥
 ``` shell
@@ -80,3 +82,7 @@ docker run -itd --detach \
   --name=runner \
   drone/drone-runner-docker:1
 ```
+
+#### 授权&&设置仓库
+- 访问drone的域名，会自动跳转到gitea进行登录授权操作
+- 在drone的页面中sync同步仓库，并将需要进行CI/CD的仓库设置为Active即可
