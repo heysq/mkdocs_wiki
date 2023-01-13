@@ -60,6 +60,7 @@ steps:
     - dev
 - name: deploy-pro
   image: appleboy/drone-ssh
+  pull: if-not-exists
   settings:
     host:
       - www.heysq.com
