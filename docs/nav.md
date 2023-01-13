@@ -10,3 +10,4 @@
 * [Linux](linux/)
 * [Ruby&&Rails](ruby/)
 * [Docker&&K8S](docker&&k8s/)
+* [CI/CD](cicd/)
