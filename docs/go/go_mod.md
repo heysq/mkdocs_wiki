@@ -24,5 +24,3 @@
 - off 关闭
 - auto 编译器判断
 ![](/images/go/go111module.jpeg)
-
-{"app_name":"app_name","file":"U4JqgquBpAExf5h+sX28PEu7zDuq+oO6U7rOulL5SDjcuME4X/jW+ju6qXsm+rJ7CHyIvaU+vr/dAWXCGMNFRP5EmQTGhKNFIEWLRPwEYcPeg6rCycM5QsRCFUIQAZ1BSIJPwiUCkIKWQf2Cq4JtwzbDIoNIQwVCGoL+wUfBZ4B5vwQ+v7xU+5i7LDoH+fq5wbonONE4T/j8eDK4n7mOuq47CvsTfBG9Gf3U/zsAIgHEgqNDQMTABOBFK0TRRfrF5AT4BJSDkUN0AmUCdkIkgbmBkIFPQXuAikFgwYLCGQGhwhYC8cJEg2kDSYPJgwnDBoLvQWWA37/LvyE9a/t0euo6JLk/+S35V/kruES4yzkn+P45dDoce2F7tPvg/X"}
