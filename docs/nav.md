@@ -11,3 +11,4 @@
 * [Ruby&&Rails](ruby/)
 * [Docker&&K8S](docker&&k8s/)
 * [CI/CD](cicd/)
+* [Nginx](nginx/)
