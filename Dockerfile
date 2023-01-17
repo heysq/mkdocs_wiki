@@ -5,9 +5,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     && pip install -r requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple \
     && mkdocs build && cp -r site /etc/nginx/ \ 
     && rm -rf /mkdocs_wiki \
-    && rm -f /etc/nginx/http.d/default.conf \
-    && sed -i 's/auto;/1;/g' /etc/nginx/nginx.conf
-ADD nginx.conf /etc/nginx/http.d/default.conf
+    && rm -f /etc/nginx/nginx.conf
+ADD nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 
