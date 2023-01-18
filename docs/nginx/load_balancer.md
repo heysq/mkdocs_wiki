@@ -56,3 +56,27 @@ upstream backend {
     server www2.example.com max_fails=2 fail_timeout=1d;
 }
 ```
+
+### proxy_next_upstream
+- 负载均衡请求出现异常，使用下一个server
+- error 建立连接 / 发送请求 / 接收响应时出错（缺省值之一）；
+- timeout 建立连接 / 发送请求 / 接收响应时超时（缺省值之一）；
+- invalid_header 上游返回空白或无效响应；
+- http_500 上游返回 500 Internal Server Error；
+- http_501 上游返回 501 Not Implemented；
+- http_502 上游返回 502 Bad Gateway；
+- http_503 上游返回 503 Service Unavailable；
+- http_504 上游返回 504 Gateway Timeout；
+- http_404 上游返回 404 Not Found；
+- http_429 上游返回 429 Too Many Requests；
+- non_idempotent 解除对非幂等请求 (POST, LOCK, PATCH) 的封印，小心造成重复提交；
+- off 不得转给下一台服务器。
+
+```
+location / {
+    ...
+    proxy_pass http://backend;
+    proxy_next_upstream error timeout http_500;
+    ...
+}
+```
