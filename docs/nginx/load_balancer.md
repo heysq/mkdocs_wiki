@@ -2,6 +2,7 @@
 - 轮询 round-robin
 - 最小连接 least-connected
 - 源地址hash ip-hash
+- uri hash
 - 加权负载均衡 weight load balancer
 - 运行状况检查 health checks
 
@@ -13,7 +14,6 @@ upstream backend {
     server srv2.example.com;
     server srv3.example.com;
 }
-
 ```
 
 ### 最小连接
@@ -30,6 +30,16 @@ upstream backend {
 ```
 upstream backend {
     ip_hash;
+    server srv1.example.com;
+    server srv2.example.com;
+    server srv3.example.com;
+}
+```
+
+### uri hash
+```
+upstream backend {
+    hash $request_uri;
     server srv1.example.com;
     server srv2.example.com;
     server srv3.example.com;
