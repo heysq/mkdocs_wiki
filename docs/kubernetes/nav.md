@@ -1,2 +1,2 @@
-* [cgroup](cgroup.md)
+* [cgroup](cgroups.md)
 * [namespace](namespace.md)
