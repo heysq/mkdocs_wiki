@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mkdocs-deployment
-  namespace: default
+  namespace: mkdocs
 spec:
   selector:
     matchLabels:
