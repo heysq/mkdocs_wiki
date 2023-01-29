@@ -7,7 +7,7 @@
 * [VIM](vim/)
 * [IDE](ide/)
 * [计算机组成](jsjzc/)
-* [Linux](linux/)
+* [Linux&macOS](linux&macos/)
 * [Ruby&&Rails](ruby/)
 * [Docker&&K8S](docker&&k8s/)
 * [Kubernetes](kubernetes/)
