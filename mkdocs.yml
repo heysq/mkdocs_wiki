@@ -1,6 +1,6 @@
 site_name: Sunqi's Wiki
-repo_url: https://gitee.com/sunqi43797189/mkdocs_wiki
-repo_name: sunqi43797189/wiki
+repo_url: https://github.com/Sunqi43797189/mkdocs_wiki
+repo_name: Sunqi43797189/mkdocs_wiki
 theme:
   name: material
   language: 'zh'

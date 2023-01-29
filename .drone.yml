@@ -4,10 +4,9 @@ name: default
 
 steps:
 - name: build
-  image: python:3.10-alpine3.16
+  image: 43797189/mkdocs_wiki_nginx:v1
   pull: if-not-exists
   commands:
-  - pip install -r requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple
   - mkdocs build
   when:
     branch:
@@ -44,6 +43,7 @@ steps:
     - dev
 - name: deploy-dev
   image: appleboy/drone-ssh
+  pull: if-not-exists
   settings:
     host:
       - home.heysq.com
