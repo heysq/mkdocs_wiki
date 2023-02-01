@@ -19,10 +19,10 @@ spec:
         app: mkdocs
     spec:
       imagePullSecrets:
-      - name: harbor-registry
+      - name: aliyun-registry
       containers:
       - name: mkdocs
-        image: harbor.heysq.com:8443/library/nginx-mkdocs:latest
+        image: registry.cn-beijing.aliyuncs.com/aliyun_wiki/mkdocs_site:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80

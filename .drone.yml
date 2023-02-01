@@ -4,7 +4,7 @@ name: default
 
 steps:
 - name: build
-  image: 43797189/mkdocs_wiki_nginx:v1
+  image: registry.cn-beijing.aliyuncs.com/aliyun_wiki/mkdocs_basic:v1
   pull: if-not-exists
   commands:
   - mkdocs build
@@ -16,11 +16,11 @@ steps:
   pull: if-not-exists
   settings:
     username:
-      from_secret: harbor_name
+      from_secret: aliyun_name
     password:
-      from_secret: harbor_password
-    registry: harbor.heysq.com:8443
-    repo: harbor.heysq.com:8443/library/nginx-mkdocs
+      from_secret: aliyun_password
+    registry: registry.cn-beijing.aliyuncs.com
+    repo: registry.cn-beijing.aliyuncs.com/aliyun_wiki/mkdocs_site
     tags: latest
     dockerfile: Dockerfile
   when:
@@ -31,11 +31,11 @@ steps:
   pull: if-not-exists
   settings:
     username:
-      from_secret: harbor_name
+      from_secret: aliyun_name
     password:
-      from_secret: harbor_password
-    registry: harbor.heysq.com:8443
-    repo: harbor.heysq.com:8443/library/nginx-mkdocs
+      from_secret: aliyun_password
+    registry: registry.cn-beijing.aliyuncs.com
+    repo: registry.cn-beijing.aliyuncs.com/aliyun_wiki/mkdocs_site
     tags: dev
     dockerfile: Dockerfile
   when:
