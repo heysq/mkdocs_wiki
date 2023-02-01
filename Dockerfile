@@ -1,4 +1,4 @@
-FROM 43797189/mkdocs_wiki_nginx:v1
+FROM registry.cn-beijing.aliyuncs.com/aliyun_wiki/mkdocs_basic:v1
 WORKDIR /mkdocs_wiki
 COPY . /mkdocs_wiki
 RUN mkdocs build && cp -r site /etc/nginx/ && rm -f /etc/nginx/nginx.conf
