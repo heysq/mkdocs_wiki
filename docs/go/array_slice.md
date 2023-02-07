@@ -105,3 +105,36 @@ func main() {
 	fmt.Println(*p)
 }
 ```
+
+### 函数传参性能
+- 传参都是值拷贝
+- slice拷贝的是引用结构
+- array拷贝的是数组的值（包含元素）
+```go
+a1 := [16]int{}
+	d1 := func(arr [16]int) int {
+		return len(arr)
+	}
+
+	f1 := func() int {
+		return d1(a1)
+	}
+
+	a2 := [65535]int{}
+	d2 := func(arr [65535]int) int {
+		return len(arr)
+	}
+	f2 := func() int {
+		return d2(a2)
+	}
+
+	for _, f := range []func() int{f1, f2} {
+		start := time.Now()
+		for i := 0; i < 10000; i++ {
+			f()
+		}
+		fmt.Printf("time.Since(start).Milliseconds(): %v\n", time.Since(start).Microseconds())
+	}
+    // 88
+    // 398362
+```

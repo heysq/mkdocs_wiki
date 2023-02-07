@@ -232,3 +232,25 @@ func BenchmarkConcatStringByBytesBufferWithInitSize(b *testing.B) {
   }
 }
 ```
+
+### []byte和string互相转换不拷贝方法
+```go
+func ByteArray2String(arr []byte) (str string) {
+	sliceHeader := (*reflect.SliceHeader)(unsafe.Pointer(&arr))
+	stringHeader := (*reflect.StringHeader)(unsafe.Pointer(&str))
+
+	stringHeader.Data = sliceHeader.Data
+	stringHeader.Len = sliceHeader.Len
+	return
+}
+
+func String2ByteArray(str string) (arr []byte) {
+	stringHeader := (*reflect.StringHeader)(unsafe.Pointer(&str))
+	sliceHeader := (*reflect.SliceHeader)(unsafe.Pointer(&arr))
+
+	sliceHeader.Data = stringHeader.Data
+	sliceHeader.Len = stringHeader.Len
+	sliceHeader.Cap = stringHeader.Len
+	return
+}
+```
