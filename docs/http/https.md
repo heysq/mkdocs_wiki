@@ -11,12 +11,13 @@
 
 ### TLS 流程
 ![](/images/http/tls.png)
+![](/images/http/https.jpg)
 
 #### 客户端发送 `client hello`
 - TLS 版本号
 - 支持的加密组件列表
 - 使用的加密算法以及秘钥长度
-- 一个随机数字 client random
+- 一个随机数字 client random（用途：防止连接重放）
 
 #### 服务发送 `server hello`
 - TLS版本号
