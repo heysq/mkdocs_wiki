@@ -234,6 +234,7 @@ func BenchmarkConcatStringByBytesBufferWithInitSize(b *testing.B) {
 ```
 
 ### []byte和string互相转换不拷贝方法
+- go 1.20之前
 ```go
 func ByteArray2String(arr []byte) (str string) {
 	sliceHeader := (*reflect.SliceHeader)(unsafe.Pointer(&arr))
@@ -252,5 +253,16 @@ func String2ByteArray(str string) (arr []byte) {
 	sliceHeader.Len = stringHeader.Len
 	sliceHeader.Cap = stringHeader.Len
 	return
+}
+```
+- go 1.20之后
+> 常用的 reflect.SliceHeader 和 reflect.StringHeader 将会被标注为被废弃
+```go
+func StringToBytes(s string) []byte {
+    return unsafe.Slice(unsafe.StringData(s), len(s))
+}
+
+func BytesToString(b []byte) string {
+    return unsafe.String(&b[0], len(b))
 }
 ```
