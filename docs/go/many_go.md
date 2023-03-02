@@ -1,7 +1,7 @@
 ### 命令
 - 正常会下载到$HOME/sdk
 ```shell
-go instlall golang.org/dl/go1.13@latest
+go install golang.org/dl/go1.13@latest
 ```
 
 ### 补全环境
