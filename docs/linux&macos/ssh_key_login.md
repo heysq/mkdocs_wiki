@@ -6,7 +6,7 @@
 - chmod 700 ~/.ssh
 - vim /etc/ssh/sshd_config
     - RSAAuthentication yes
-    - RSAAuthentication yes
+    - PubkeyAuthentication yes
 - systemctl restart ssh
 
 #### 登录机器操作
