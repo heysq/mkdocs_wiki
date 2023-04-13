@@ -8,7 +8,7 @@
 - 存储器：存储指令
 - 控制器：从PC寄存器或者指令寄存器取出指令的操作以及指令的解码操作都是控制器完成的
 - ALU 运算器：指令运算，数据传输
-![](/images/jsjzc/cpuzhiling.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/cpuzhiling.jpeg)
 
 
 ### Clock Cycle 时钟周期
@@ -21,7 +21,7 @@
 ### 指令周期
 - 对于一个指令周期来说，取出一条指令，然后执行它，至少需要两个 CPU 周期。取出指令至少需要一个 CPU 周期，执行至少也需要一个 CPU 周期，复杂的指令则需要更多的 CPU 周期
 - 一个指令周期，包含多个 CPU 周期，而一个 CPU 周期包含多个时钟周期
-![](/images/jsjzc/cycle.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/cycle.jpeg)
 
 ### 数据通路
 - 处理器单元
@@ -41,7 +41,7 @@
 - 需要有一个能够进行状态读写的电路元件，能都存储数据并随时可以拿出来使用，常见的能够进行状态读写的电路，就有锁存器（Latch），以及 D 触发器（Data/Delay Flip-flop）的电路
 - 需要有一个“自动”的电路，按照固定的周期，不停地实现 PC 寄存器自增，自动地去执行“Fetch - Decode - Execute“的步骤
 - 需要有一个“译码”的电路。无论是对于指令进行 decode，还是对于拿到的内存地址去获取对应的数据或者指令，都需要通过一个电路找到对应的数据
-![](/images/jsjzc/kongzhiqi.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/kongzhiqi.jpeg)
 
 ### 时序逻辑电路
 - 为了让CPU中的电路自动工作引入时序逻辑电路
@@ -55,13 +55,13 @@
 > 按照固定的周期不断在 0 和 1 之间切换的信号，就是`时钟信号（Clock Signal）`
 > 把电路的输出信号作为输入信号，再回到当前电路。这样的电路构造方式叫作`反馈电路`
 
-![](/images/jsjzc/shizhongdianlu.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/shizhongdianlu.jpeg)
 
 
 ### D触发器
 - 两个或非门组合而成
 - 或非门真值表
-![](/images/jsjzc/huofeimen.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/huofeimen.jpeg)
 
 - D触发器电路
-![](/images/jsjzc/dchufaqi.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/dchufaqi.jpeg)

@@ -67,12 +67,12 @@ int main()
 - pop 指令和ret指令: 出栈操作
 
 ### 乒乓球桶举例栈
-![](/images/jsjzc/chengxuzhan.jpg)
+![](http://image.heysq.com/wiki/jsjzc/chengxuzhan.jpg)
 
 ### 实际程序
 - 实际的程序栈布局，顶和底与我们的乒乓球桶相比是倒过来的。底在最上面，顶在最下面
 - 这样的布局是因为栈底的内存地址是在一开始就固定的。而一层层压栈之后，栈顶的内存地址是在逐渐变小而不是变大
-![](/images/jsjzc/chengxuzhanshiji.jpg)
+![](http://image.heysq.com/wiki/jsjzc/chengxuzhanshiji.jpg)
 
 ### 函数内联
 - 已知不会有嵌套调用函数的情况下，将`call`指令替换为调用函数的地址

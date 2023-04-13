@@ -8,14 +8,14 @@
 - 有符号整数 int8-int64
 - 无符号整数 uint8-unint64
 - 本质差别在于最高二进制位（bit 位）是否被解释为符号位
-![](/images/go/zhengxing1.jpg)
+![](http://image.heysq.com/wiki/go/zhengxing1.jpg)
 
 #### 平台相关整型
 - int
 - uint
 - uintptr
 - 可以调用unsafe.Sizeof(变量) 方法来获取对应平台占用的大小
-![](/images/go/zhengxing2.jpg)
+![](http://image.heysq.com/wiki/go/zhengxing2.jpg)
 
 #### 整型溢出
 - 整型运算结果超出表示的范围
@@ -73,10 +73,10 @@ d1 := 0x_5c_6d // 十六进制：0x5c6d
 - 扩展单精度 43位以上
 - 扩展双精度 79位以上
 - 二进制表示方式
-![](/images/go/ieee754.jpg)
+![](http://image.heysq.com/wiki/go/ieee754.jpg)
 
 #### 浮点数阶码和尾数
-![](/images/go/jiema.jpg)
+![](http://image.heysq.com/wiki/go/jiema.jpg)
 
 #### 十进制小数转换成二进制计算方式
 - 乘2取整的竖式计算
@@ -84,7 +84,7 @@ d1 := 0x_5c_6d // 十六进制：0x5c6d
 - 剩下的小数部分再乘2，记录方式同上
 - 直到结果等于小数部分为0
 
-![](/images/go/shushijisuan.jpg)
+![](http://image.heysq.com/wiki/go/shushijisuan.jpg)
 
 #### 十进制形式的浮点值 139.8125转换为IEEE754单精度二进制
 ##### 二进制转换

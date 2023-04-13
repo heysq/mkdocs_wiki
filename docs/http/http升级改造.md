@@ -30,7 +30,7 @@
 - 并行交错发送多个响应，响应之间互不影响
 - 使用一个连接发送请求和响应
 
-![](/images/http/http1_2.png)
+![](http://image.heysq.com/wiki/http/http1_2.png)
 
 #### 优先级
 - HTTP2允许每个数据流有一个权重和优先级

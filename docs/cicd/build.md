@@ -32,7 +32,7 @@ services:
 - Gitea中新建一个OAuth2应用
 - 应用回调地址写drone将要运行的域名+/login
 - drone.heysq.com:8443/login
-![](/images/cicd/gitea.png) 
+![](http://image.heysq.com/wiki/cicd/gitea.png) 
 - 创建一个共享密钥
 ``` shell
 openssl rand -hex 16

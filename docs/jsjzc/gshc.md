@@ -4,7 +4,7 @@
 - 内存中的指令，数据会被加载到L1-L3Cache中，而不是直接由CPU访问内存去拿
 - 由特定的SRAM（静态随机存储器）组成的物理芯片
 - 现代 CPU 中大量的空间已经被 SRAM 占据，图中用红色框出的部分就是 CPU 的 L3 Cache 芯片
-![](/images/jsjzc/cpucache.jpg)
+![](http://image.heysq.com/wiki/jsjzc/cpucache.jpg)
 
 ### Cache Line
 - 缓存块
@@ -29,12 +29,12 @@
 #### 举例
 - 主内存被分为32块，然后cache中有8个缓存块
 - 访问第21号内存块，就回去查询`21mod8`也就是第5块缓存块的位置
-![](/images/jsjzc/zhijieyingshe.png)
+![](http://image.heysq.com/wiki/jsjzc/zhijieyingshe.png)
 
 #### 优化
 - 实际缓存块会分配2的N次方个
 - 查询缓存块的位置就是内存块的低N为就可以
-![](/images/jsjzc/neicunyouhua.png)
+![](http://image.heysq.com/wiki/jsjzc/neicunyouhua.png)
 
 #### 确定缓存块的地址来自确定的内存块
 - 21， 13， 5 mod8余数都是5
@@ -51,11 +51,11 @@
 #### 访存偏移量
 - CPU 在读取数据的时候，并不是要读取一整个 Block，而是读取一个他需要的数据片段。这样的数据，我们叫作 CPU 里的一个字（Word）
 - 具体是哪个字，就用这个字在整个 Block 里面的位置来决定，这个位置就是偏移量
-![](/images/jsjzc/fangcundizhi.png)
+![](http://image.heysq.com/wiki/jsjzc/fangcundizhi.png)
 
 ### CPU高速缓存层级结构
 
-![](/images/jsjzc/cpucengjijiegou.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/cpucengjijiegou.jpeg)
 
 ### 高速缓存写入策略
 - 写直达
@@ -66,7 +66,7 @@
 - 每次数据写入都要写入到主内存里面
 - 写数据时判断cache里有没有命中，有的话更新cache中的数据后继续写入到主内存
 - 每次都要写主内存，这个写策略很慢
-![](/images/jsjzc/xiezhida.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/xiezhida.jpeg)
 
 
 #### 写回
@@ -76,12 +76,12 @@
 - 数据写入到CacheBlock时，同时会标记Block为脏状态
 - 下次再写入时，会被刷到主内存
 - 加载内存到Block时，也会加一个同步脏数据到主内存的过程
-![](/images/jsjzc/xiehui.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/xiehui.jpeg)
 
 
 ### 缓存一致性问题
 - CPU核心进行数据更改后，其他核心与更改的核心的cache中数据是不一致的
-![](/images/jsjzc/hcbyz.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/hcbyz.jpeg)
 
 #### 缓存不一致解决
 - 写传播 Write Propagation：一个CPU核心里的cache更新，必须能够传播到其他的对应节点的cache line里
@@ -89,7 +89,7 @@
 > 两个CPU核心对数据的更新，传播到其他CPU核心的顺序应该是一样的，先后顺序要一致
 
 
-![](/images/jsjzc/swcxh.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/swcxh.jpeg)
 
 ### 总线嗅探机制
 - 总线嗅探机制解决多个CPU核心之间的数据传播机制
@@ -101,11 +101,11 @@
 - CPU核心写入Cache之后，会广播一个失效请求告诉其他CPU核心，其他CPU核心，根据内容标记自己本地的Cache中的缓存数据为失效状态
 - 写广播（Write Broadcast）的协议。一个写入请求广播到所有的 CPU 核心，同时更新各个核心里的 Cache
 - 写广播在实现上很简单，但是写广播需要占用更多的总线带宽。写失效只需要告诉其他的 CPU 核心，哪一个内存地址的缓存失效了，但是写广播还需要把对应的数据传输给其他 CPU 核心
-![](/images/jsjzc/xieshixiao.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/xieshixiao.jpeg)
 
 ### MESI 内容
 - M：代表已修改 Modified，cache line中的脏的block，里边的数据更新了，但是没有写回到主内存
 - E：代表独占 Exclusive，cache line只加载了当前CPU核所拥有的Cache里，其他的CPU核并没有加载对应的数据到自己的Cache里，这个时候，更新cache block写入数据，不需要更新到其他CPU核心
 - S：代表共享 Shared，独占状态下，核心接收到主线的其他CPU也读取数据到自己的Cache中的请求，就会变成共享状态。当要更新cache中的数据时，需要获取当前对应的cache block数据的所有权，一般发送一个广播操作`RFO（Request For Ownership）`，通知其他CPU核心将对应的Cache标记为失效状态
 - I：代表已失效 Invalidated，cache line中的block，数据已经失效了，数据不可信
-![](/images/jsjzc/mesi.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/mesi.jpeg)

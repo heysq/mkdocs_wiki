@@ -10,17 +10,17 @@
 - 主版本
 - 次版本
 - 补丁版本
-![](/images/go/yuyibanben.png)
+![](http://image.heysq.com/wiki/go/yuyibanben.png)
 
 ### 最小版本选择
 - Minimal Version Selection
 - 项目之间出现依赖同一个包但是不同版本的情况
 - go mod 选择依赖所有版本的最小的那个版本
 - go mod 不会选择最新的1.7.0版本，而是选择1.3.0 版本
-![](/images/go/zuixiaoyilai.png)
+![](http://image.heysq.com/wiki/go/zuixiaoyilai.png)
 
 ### GO111MODULE配置值
 - on 开启
 - off 关闭
 - auto 编译器判断
-![](/images/go/go111module.jpeg)
+![](http://image.heysq.com/wiki/go/go111module.jpeg)

@@ -20,7 +20,7 @@
 - 存储异常代码合对应的异常处理程序的地址
 - 拿到异常代码后，CPU会触发异常处理流程，然后根据异常代码，查询异常表
 - 找到异常处理程序所在的地址
-![](/images/jsjzc/yichangliucheng.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/yichangliucheng.jpeg)
 
 ### 异常分类
 - 中断 Interrupt
@@ -45,7 +45,7 @@
 #### 中止
 - CPU遇到了故障，并且故障无法恢复
 
-![](/images/jsjzc/yichangdetail.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/yichangdetail.jpeg)
 
 ### 异常处理-上下文切换
 - 切换到异常处理程序的时候，像是去调用一个异常处理函数

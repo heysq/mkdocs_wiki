@@ -22,14 +22,14 @@
 - 原来的数组中的数据被分散到2个数组中
 - 用高位加0和加1的方式
 
-![](/images/redis/rehash.png)
+![](http://image.heysq.com/wiki/redis/rehash.png)
 
 ### 扩缩容前后高位加法遍历顺序
 - 采用高位进位加法的遍历顺序，rehash后的槽位遍历顺序上是相邻的
 - 扩容后即将遍历的槽位之前的槽都是已经遍历过的了，可以避免对之前的槽进行重复遍历 0110之前的槽都遍历过了
 - 缩容不会重复遍历之前已经遍历过的槽，但是会对当前槽的数据进行重复遍历，10之前的槽遍历过了，但是10这个槽的数据会重复遍历一次
 
-![](/images/redis/scan.png)
+![](http://image.heysq.com/wiki/redis/scan.png)
 
 #### 更多的scan
 - hscan

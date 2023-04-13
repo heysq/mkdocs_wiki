@@ -68,7 +68,7 @@ type slice struct {
 arr := [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 sl := arr[3:7:9]
 ``` 
-![](/images/go/arr_low_high_max.jpg)   
+![](http://image.heysq.com/wiki/go/arr_low_high_max.jpg)   
 
 - 基于切片创建切片
 

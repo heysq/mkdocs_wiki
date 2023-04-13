@@ -8,7 +8,7 @@
 - 每个指令的操作不一样，决定了执行时长也不一样
 - 于是单指令周期处理器的时钟周期就是最长的指令运行所需要的时间
 - 快速执行完成的指令，需要等待满一个时钟周期，才能执行下一条指令
-![](/images/jsjzc/danzhilingchuliqi.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/danzhilingchuliqi.jpeg)
 
 ### 指令流水钱-提高执行速度
 - 可以理解为一个时钟周期内，完成多条指令的不同阶段，提高cpu吞吐率，间接的也可以提高CPU的时钟频率
@@ -17,15 +17,15 @@
 - 五级流水线：把“执行指令”拆分成“ALU 计算（指令执行）- 内存访问 - 数据写回”
 - 如果某一个操作步骤的时间太长，就可以考虑把这个步骤，拆分成更多的步骤，让所有步骤需要执行的时间尽量都差不多长
 - 现代的 ARM 或者 Intel 的 CPU，流水线级数都已经到了 14 级
-![](/images/jsjzc/liushuixianshiyi.jpeg)
-![](/images/jsjzc/liushuixian.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/liushuixianshiyi.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/liushuixian.jpeg)
 
 #### 流水线级数增多带来的问题
 - 每一级流水线对应的输出，都要放到流水线寄存器（Pipeline Register）里面
 - 在下一个时钟周期，交给下一个流水线级去处理。所以，每增加一级的流水线，就要多一级写入到流水线寄存器的操作
 - 级数变多后，写入流水线寄存器的时间占比会越来越高，提升性能性价比不高
 - 指令依赖问题广泛存在
-![](/images/jsjzc/liushuixianwenti.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/liushuixianwenti.jpeg)
 
 ### 流水线三大冒险
 - 结构冒险 Structural Hazard
@@ -38,11 +38,11 @@
 
 > 对于访问内存数据和取指令的冲突，一个直观的解决方案就是把我们的内存分成两部分，让它们各有各的地址译码器。这两部分分别是存放指令的程序内存和存放数据的数据内存。这种把内存拆成两部分的解决方案，在计算机体系结构里叫作哈佛架构（Harvard Architecture）
 
-![](/images/jsjzc/jiegoumaoxian.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/jiegoumaoxian.jpeg)
 
 - 现代CPU混合架构
 - 借鉴了哈佛结构的思路，现代的 CPU 虽然没有在内存层面进行对应的拆分，却在 CPU 内部的高速缓存部分进行了区分，把高速缓存分成了指令缓存（Instruction Cache）和数据缓存（Data Cache）两部分
-![](/images/jsjzc/hunhejiagou.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/hunhejiagou.jpeg)
 
 ### 数据冒险
 - 同时在执行的多个指令之间，有数据依赖的情况
@@ -55,7 +55,7 @@
 - 也叫流水线冒泡
 - 让整个流水线停顿一个或者多个周期
 - 实际cpu是在执行后面的操作步骤前面，插入一个 NOP 操作，也就是执行一个其实什么都不干的操作
-![](/images/jsjzc/liushuixiantingdun.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/liushuixiantingdun.jpeg)
 
 
 
@@ -67,7 +67,7 @@ add $s2, $s1,$t0
 - 第一条指令，把 s1 和 s2 寄存器里面的数据相加，存入到 t0 这个寄存器里面
 - 第二条指令，把 s1 和 t0 寄存器里面的数据相加，存入到 s2 这个寄存器里面
 - 两个指令是有原来关系的，第二条指令依赖第一条指令将结果写回到寄存器t0，于是通过插入nop，导致流水线停顿，来解决数据冒险
-![](/images/jsjzc/nopshiyi.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/nopshiyi.jpeg)
 
 #### 操作数前推或者操作数旁路
 - 通过 NOP 操作进行对齐，在流水线里，就不会遇到资源竞争产生的结构冒险问题了，除了可以解决结构冒险之外，这个 NOP 操作，也就是流水线停顿插入的对应操作
@@ -75,7 +75,7 @@ add $s2, $s1,$t0
 - 完全可以在第一条指令的执行阶段完成之后，直接将结果数据传输给到下一条指令的 ALU
 - 下一条指令不需要再插入两个 NOP 阶段，就可以继续正常走到执行阶段
 - 在硬件层面制造一条旁路，让一条指令的计算结果，可以直接传输给下一条指令
-![](/images/jsjzc/caozuoshuqiantuishiyi.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/caozuoshuqiantuishiyi.jpeg)
 
 ### 指令乱序执行
 - 不依赖前面指令执行结果的指令，可以在流水线中与其他指令并行运行
@@ -85,14 +85,14 @@ a = b + c
 d = a * e
 x = y * z
 ```
-![](/images/jsjzc/luanxuzhixingshiyi.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/luanxuzhixingshiyi.jpeg)
 
 #### 乱序执行CPU流水线
 - 取值和译码还是顺序执行的
 - 每个译码后的指令会排队等待依赖数据的输入
 - 符合执行条件的指令会到功能单元就是ALU中进行指令执行
 - 执行完成后会到重拍缓冲区进行指令结果顺序重排
-![](/images/jsjzc/luanxuzhixing.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/luanxuzhixing.jpeg)
 
 ### 分支预测
 
@@ -101,7 +101,7 @@ x = y * z
 - 顾名思义，自然就是仍然按照顺序，把指令往下执行。其实就是 CPU 预测，条件跳转一定不发生。这样的预测方法，其实也是一种静态预测技术
 - 如果分支预测失败了，那就把后面已经取出指令已经执行的部分，给丢弃掉。这个丢弃的操作，在流水线里面，叫作 Zap 或者 Flush
 - CPU 不仅要执行后面的指令，对于这些已经在流水线里面执行到一半的指令，还需要做对应的清除操作。比如，清空已经使用的寄存器里面的数据等
-![](/images/jsjzc/zapflush.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/zapflush.jpeg)
 
 #### 动态分支预测
 ##### 一级分支预测
@@ -111,4 +111,4 @@ x = y * z
 ##### 双模态分支预测
 - 也叫 2 比特饱和计数
 - 添加状态机
-![](/images/jsjzc/shuangmotai.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/shuangmotai.jpeg)

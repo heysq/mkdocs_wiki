@@ -6,7 +6,7 @@ https://mp.weixin.qq.com/s/ZmfwNlq5_A2RgpUSkJQXrQ
 - defer 关键字后面只能接函数（或方法），这些函数被称为 deferred 函数
 - defer 将它们注册到其所在 Goroutine 中，用于存放 deferred 函数的栈数据结构中，这些 deferred 函数将在执行 defer 的函数退出前，按后进先出（LIFO）的顺序被程序调度执行
 - 无论是执行到函数体尾部返回，还是在某个错误处理分支显式 return，又或是出现 panic，已经存储到 deferred 函数栈中的函数，都会被调度执行
-![](/images/go/defer.jpg)
+![](http://image.heysq.com/wiki/go/defer.jpg)
 
 ### defer 注意事项
 - 明确哪些函数可以作为 deferred 函数，有返回值的deferred函数的返回值会被自动丢弃

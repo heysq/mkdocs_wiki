@@ -1,1 +1,1 @@
-![](/images/go/go_project.png)
+![](http://image.heysq.com/wiki/go/go_project.png)

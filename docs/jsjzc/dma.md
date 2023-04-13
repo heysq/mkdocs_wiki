@@ -32,7 +32,7 @@
 7. DMAC再向我们的内存发起总线写的数据传输请求，把数据写入到内存里面
 8. DMAC 会反复进行上面第 6、7 步的操作，直到 DMAC 的寄存器里面设置的数据长度传输完成
 9. 数据传输完成之后，DMAC 重新回到第 3 步的空闲状态
-![](/images/jsjzc/dmac.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/dmac.jpeg)
 
 ### kafka用DMA加速
 - 本地硬盘传输到网卡设备
@@ -41,7 +41,7 @@
 - 第二次传输，需要从内核缓冲区里面的数据，复制到我们应用分配的内存里面。这个传输是通过 CPU 搬运的
 - 第三次传输，要从我们应用的内存里面，再写到操作系统的 Socket 的缓冲区里面去。这个传输，还是由 CPU 搬运的
 - 最后一次传输，需要再从 Socket 的缓冲区里面，写到网卡的缓冲区里面去。这个传输又是通过 DMA 搬运的
-![](/images/jsjzc/kafka_dma.jpg)
+![](http://image.heysq.com/wiki/jsjzc/kafka_dma.jpg)
 
 #### kafka加速——零拷贝 zero copy
 ```java
@@ -58,4 +58,4 @@ public long transferFrom(FileChannel fileChannel, long position, long count) thr
 - socker的内容也不是写入到socker的buffer中
 - 直接根据描述符写到网卡的缓冲区里
 - 没有在内存层面去“复制（Copy）”数据
-![](/images/jsjzc/kafkajiasu.jpg)
+![](http://image.heysq.com/wiki/jsjzc/kafkajiasu.jpg)

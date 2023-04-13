@@ -19,18 +19,18 @@
 #### 单精度浮点数
 - IEEE754国际标准规定，32位的浮点数，最高的1位是符号位s，接着的8位是指数E，剩下的23位为有效数字M
 
-![](/images/jsjzc/danjingdu.png)
+![](http://image.heysq.com/wiki/jsjzc/danjingdu.png)
 
 - (-1)^s表示符号位，当s=0，V为正数；当s=1，V为负数
 - M表示有效数字，大于等于1，小于2
 - 2^E表示指数位
 
-![](/images/jsjzc/ieee754fudianshu.png)
+![](http://image.heysq.com/wiki/jsjzc/ieee754fudianshu.png)
 
 
 #### 双精度浮点数
 - 对于64位的浮点数，最高的1位是符号位S，接着的11位是指数E，剩下的52位为有效数字M
-![](/images/jsjzc/shuangjingdu.png)
+![](http://image.heysq.com/wiki/jsjzc/shuangjingdu.png)
 
 #### IEEE规定对M的规定
 - 1≤M<2，也就是说，M可以写成1.xxxxxx的形式，其中xxxxxx表示小数部分。IEEE 754规定，在计算机内部保存M时，默认这个数的第一位总是1，因此可以被舍去，只保存后面的xxxxxx部分
@@ -47,7 +47,7 @@
 - E不全为0或不全为1。这时，浮点数就采用上面的规则表示，即指数E的计算值减去127（或1023），得到真实值，再将有效数字M前加上第一位的1
 - E全为0。这时，浮点数的指数E等于1-127（或者1-1023），有效数字M不再加上第一位的1，而是还原为0.xxxxxx的小数。这样做是为了表示±0，以及接近于0的很小的数字
 - E全为1。这时，如果有效数字M全为0，表示±无穷大（正负取决于符号位s）；如果有效数字M不全为0，表示这个数不是一个数（NaN）
-![](/images/jsjzc/fudianshunan.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/fudianshunan.jpeg)
 
 ### 小数换成二进制方式
 - 小数部分转换成二进制是用一个相似的反方向操作，就是乘以 2，然后看看是否超过 1
@@ -55,7 +55,7 @@
 - 如果不超过1，就记下0
 
 #### 0.1转成二进制
-![](/images/jsjzc/01erjinzhi.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/01erjinzhi.jpeg)
 #### 9.1 二进制
 - 1001.000110011…这样一个二进制表示
 - 转成浮点数表示方式`1.001000110011...*2^3`

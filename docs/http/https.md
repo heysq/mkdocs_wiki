@@ -10,8 +10,8 @@
 - 工作在传输层和应用层之间
 
 ### TLS 流程
-![](/images/http/tls.png)
-![](/images/http/https.jpg)
+![](http://image.heysq.com/wiki/http/tls.png)
+![](http://image.heysq.com/wiki/http/https.jpg)
 
 #### 客户端发送 `client hello`
 - TLS 版本号

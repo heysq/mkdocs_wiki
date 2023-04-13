@@ -12,7 +12,7 @@
 
 > AMD，趁着 Intel 研发[安腾](https://wiki.heysq.com/jsjzc/cpu%E5%8A%A0%E9%80%9F/#vliw)的时候，推出了兼容 32 位 x86 指令集的 64 位架构，也就是现在常看到的 amd64
 
-![](/images/jsjzc/sisc_risc.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/sisc_risc.jpeg)
 
 ### 微指令
 - Micro-Instructions/Micro-Ops

@@ -24,7 +24,7 @@
 - 可以在清零的前一秒和后一秒，两秒内发送阈值乘2的请求
 - 一旦请求数量瞬间变多，还是会有崩溃的风险
 
-![](/images/go/count.png)
+![](http://image.heysq.com/wiki/go/count.png)
 
 #### 简单代码实现
 ```go
@@ -254,7 +254,7 @@ func (leaky *LeakyBucket) Set(rate, capacity float64) {
 - 令牌桶空闲时，可以攒着最高的限额数的令牌
 - 由于木桶内只要有令牌，请求就可以被处理，所以令牌桶算法可以支持突发流量
 
-![](/images/go/lingpaitong.png)
+![](http://image.heysq.com/wiki/go/lingpaitong.png)
 
 #### 参数设置
 - 木桶的容量  - 考虑业务逻辑的资源消耗和机器能承载并发处理多少业务逻辑。

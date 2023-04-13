@@ -3,10 +3,10 @@
 - 然后交给多个不同的功能单元去处理
 - 同时把多条指令发送到不同的译码器或者后续处理的流水线中叫`多发射`
 - CPU里边有很多并行的流水线，一个时钟周期，在`多发射`的情况下就能进行多次运算，叫`超标量`
-![](/images/jsjzc/chaobiaoliang.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/chaobiaoliang.jpeg)
 
 - 执行过程
-![](/images/jsjzc/cblzhixing.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/cblzhixing.jpeg)
 
 ### VLIW
 - 超长指令字设计
@@ -14,7 +14,7 @@
 - 代表架构intel安腾处理器
 - 判断指令前后依赖关系，从CPU电路硬件层面，调整到编译器这个软件
 - 多条指令打包成一个指令包
-![](/images/jsjzc/vliwjiagou.jpeg)
+![](http://image.heysq.com/wiki/jsjzc/vliwjiagou.jpeg)
 
 #### VLIW问题
 - 不兼容前代指令，不兼容x86指令集，所有软件运行必须重新编译

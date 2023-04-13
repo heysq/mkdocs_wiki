@@ -10,12 +10,12 @@
 ### 内存分段
 - 找出一段连续的物理内存和虚拟内存地址进行映射的方法，叫做`分段`
 - `段`，就是指系统分配出来的那个连续的内存空间
-![](/images/jsjzc/neicunfenduan.png)
+![](http://image.heysq.com/wiki/jsjzc/neicunfenduan.png)
 
 #### 内存分段缺陷-内存碎片
 - 总体内存剩余空间大于新程序需要分配的内存
 - 单个内存剩余大小不够给新程序分配
-![](/images/jsjzc/neicunsuipian.png)
+![](http://image.heysq.com/wiki/jsjzc/neicunsuipian.png)
 
 #### 内存交换
 - 将现有的内存中的数据写入到硬盘
@@ -30,4 +30,4 @@
 - 而对应的程序所需要占用的虚拟内存空间，也会同样切成一段段固定尺寸的大小。这样一个连续并且尺寸固定的内存空间，叫页（Page）
 - 从虚拟内存到物理内存的映射，不再是拿整段连续的内存的物理地址，而是按照一个一个页来的。页的尺寸一般远远小于整个程序的大小
 - 发生内存交换时，需要写入硬盘的数据减少，相对速度变快
-![](/images/jsjzc/neicunfenye.png)
+![](http://image.heysq.com/wiki/jsjzc/neicunfenye.png)

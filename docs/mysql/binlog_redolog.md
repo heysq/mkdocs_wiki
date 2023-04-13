@@ -6,7 +6,7 @@
 - write 是将binlog cache的内容放入到文件系统的page cache
 - fsync 会将page cache 数据持久化道磁盘
 
-![](/images/mysql/binlog.png)
+![](http://image.heysq.com/wiki/mysql/binlog.png)
 
 ### sync_binlog
 - sync-binlog为0，每次事务提交都会write到page cache，不会fsync
@@ -46,7 +46,7 @@
 ### 组提交
 - 每次redo log 落盘时，携带多个提交事务的redo log buffer
 - binlog也可以组提交
-![](/images/mysql/group_commit.png)
+![](http://image.heysq.com/wiki/mysql/group_commit.png)
 
 ### binlog组提交
 - binlog_group_commit_sync_delay 参数，表示延迟多少微秒后才调用 fsync
